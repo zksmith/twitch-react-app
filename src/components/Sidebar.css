@@ -1,0 +1,27 @@
+.logo {
+  font-family: "Major Mono Display", monospace;
+  color: #b9c1b6;
+  padding-bottom: 2rem;
+}
+.sidebar {
+  flex: 0 0 15rem;
+  height: 100%;
+  background: #0e1b22;
+  color: #505455;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-links li {
+  padding: 15px;
+}
+.sidebar-links .active {
+  color: #b9c1b6;
+}
+.stream-btn {
+  padding: 12px 19px;
+}

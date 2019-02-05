@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Sidebar from "./components/Sidebar";
 
 class App extends Component {
   constructor(props) {
@@ -27,16 +28,26 @@ class App extends Component {
     if (this.state.currentStream !== "") {
       return (
         <div className="App">
-          <iframe
-            src={`https://player.twitch.tv/?channel=${
-              this.state.currentStream
-            }&muted=false`}
-            title={`featured streamer ${this.state.currentStream}`}
-          />
+          <Sidebar />
+          <div className="main-content">
+            <iframe
+              src={`https://player.twitch.tv/?channel=${
+                this.state.currentStream
+              }&muted=false`}
+              title={`featured streamer ${this.state.currentStream}`}
+            />
+          </div>
         </div>
       );
     } else {
-      return <p>...</p>;
+      return (
+        <div className="App">
+          <Sidebar />
+          <div className="main-content">
+            <p>Loading...</p>
+          </div>
+        </div>
+      );
     }
   }
 }
