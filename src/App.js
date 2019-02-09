@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentStream: ""
+      currentStream: "",
+      allFeaturedStreams: ""
     };
   }
   componentDidMount() {
@@ -18,8 +19,10 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        console.log(data.featured[0].stream);
         self.setState({
-          currentStream: data.featured[0].stream.channel.name
+          currentStream: data.featured[0].stream.channel.name,
+          allFeaturedStreams: data.featured
         });
       })
       .catch(error => console.log(error));
@@ -30,12 +33,24 @@ class App extends Component {
         <div className="App">
           <Sidebar />
           <div className="main-content">
-            <iframe
-              src={`https://player.twitch.tv/?channel=${
-                this.state.currentStream
-              }&muted=false`}
-              title={`featured streamer ${this.state.currentStream}`}
-            />
+            <div className="featured-streamer">
+              <div className="video">
+                <iframe
+                  src={`https://player.twitch.tv/?channel=${
+                    this.state.currentStream
+                  }&muted=true`}
+                  title={`featured streamer ${this.state.currentStream}`}
+                  frameBorder="0"
+                  height="740"
+                  width="416"
+                />
+              </div>
+            </div>
+            <div className="thumbnail-row">
+              {this.state.allFeaturedStreams.map(stream => (
+                <img src={stream.stream.preview.medium} />
+              ))}
+            </div>
           </div>
         </div>
       );
