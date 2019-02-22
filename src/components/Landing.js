@@ -19,6 +19,7 @@ class Landing extends Component {
       .then(data => {
         console.log(data);
         console.log(data.featured[0].stream);
+
         self.setState({
           currentStream: data.featured[0].stream.channel.name,
           allFeaturedStreams: data.featured
@@ -43,14 +44,14 @@ class Landing extends Component {
               />
             </div>
           </div>
-          <div className="thumbnail-row">
+          {/* <div className="thumbnail-row">
             {this.state.allFeaturedStreams.map(stream => (
               <img
                 src={stream.stream.preview.medium}
                 alt={stream.stream.channel.display_name}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       );
     } else {

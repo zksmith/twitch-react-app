@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Router } from "@reach/router";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Landing from "./components/Landing";
+import Channels from "./components/Channels";
+import Games from "./components/Games";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +17,11 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar />
-        <Landing />
+        <Router>
+          <Landing path="/" />
+          <Channels path="channels" />
+          <Games path="games" />
+        </Router>
       </div>
     );
   }
