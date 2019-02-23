@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Landing from "./components/Landing";
-import Channels from "./components/Channels";
+import Streams from "./components/Streams";
 import Games from "./components/Games";
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
         <Sidebar />
         <Router>
           <Landing path="/" />
-          <Channels path="channels" />
+          <Streams path="channels" />
           <Games path="games" />
         </Router>
       </div>

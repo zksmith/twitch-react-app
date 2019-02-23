@@ -13,7 +13,7 @@ class Sidebar extends Component {
             <Link to="/">⇨ Home Page</Link>
           </li>
           <li>
-            <Link to="channels">⇨ Channels</Link>
+            <Link to="channels">⇨ Streams</Link>
           </li>
           <li>
             <Link to="games">⇨ Games</Link>
