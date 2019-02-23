@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 import "./Landing.css";
 
 class Landing extends Component {
@@ -11,8 +12,10 @@ class Landing extends Component {
     };
   }
   componentDidMount() {
-    var url =
-      "https://api.twitch.tv/kraken/streams/featured?client_id=b1r5nyhmnh17p0t2orohaquamw0f3h7";
+    const env = runtimeEnv();
+    var url = `https://api.twitch.tv/kraken/streams/featured?client_id=${
+      env.REACT_APP_CLIENT_ID
+    }`;
     let self = this;
     fetch(url)
       .then(response => response.json())

@@ -27,4 +27,5 @@
 }
 .stream-btn {
   padding: 12px 19px;
+  cursor: not-allowed;
 }
