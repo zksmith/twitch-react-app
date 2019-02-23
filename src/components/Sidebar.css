@@ -22,6 +22,9 @@
 .sidebar-links .active {
   color: #b9c1b6;
 }
+.sidebar-links a:hover {
+  color: #b9c1b6;
+}
 .stream-btn {
   padding: 12px 19px;
 }

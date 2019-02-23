@@ -13,7 +13,13 @@ body,
   padding: 6px;
   color: #b9c1b6;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
 ::-webkit-scrollbar {
   width: 12px;
 }
