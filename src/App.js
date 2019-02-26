@@ -19,7 +19,7 @@ class App extends Component {
         <Sidebar />
         <Router>
           <Landing path="/" />
-          <Streams path="channels" />
+          <Streams path="streams" />
           <Games path="games" />
         </Router>
       </div>
