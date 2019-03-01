@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
+import { Link } from "@reach/router";
 import "./Streams.css";
 
 class Streams extends Component {
@@ -32,8 +33,10 @@ class Streams extends Component {
       <div className="streams">
         {state.allStreams.map(stream => (
           <div className="stream-card" key={stream.channel.name}>
-            <img src={stream.preview.medium} />
-            <p>{stream.channel.name}</p>
+            <Link to={`/channel/${stream.channel.name}`}>
+              <img src={stream.preview.medium} />
+              <p>{stream.channel.name}</p>
+            </Link>
           </div>
         ))}
       </div>
