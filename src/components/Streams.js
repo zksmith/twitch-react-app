@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
+import "./Streams.css";
 
 class Streams extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Streams extends Component {
   render() {
     let state = this.state;
     return (
-      <div>
+      <div className="streams">
         {state.allStreams.map(stream => (
           <div className="stream-card" key={stream.channel.name}>
             <img src={stream.preview.medium} />
