@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 import "./Landing.css";
+import Video from "./Video.js";
 
 class Landing extends Component {
   constructor(props) {
@@ -35,17 +36,7 @@ class Landing extends Component {
       return (
         <div className="main-content">
           <div className="featured-streamer">
-            <div className="video">
-              <iframe
-                src={`https://player.twitch.tv/?channel=${
-                  state.currentStream
-                }&muted=true`}
-                title={`featured streamer ${state.currentStream}`}
-                frameBorder="0"
-                height="740"
-                width="416"
-              />
-            </div>
+            <Video currentStream={state.currentStream} />
           </div>
           {/* <div className="thumbnail-row">
             {state.allFeaturedStreams.map(stream => (
