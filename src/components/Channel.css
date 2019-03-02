@@ -1,0 +1,12 @@
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 85vw;
+  height: 100vh;
+}
+.featured-streamer {
+  width: 740px;
+  height: 416px;
+}

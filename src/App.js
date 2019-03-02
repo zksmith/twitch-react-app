@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import Landing from "./components/Landing";
 import Streams from "./components/Streams";
 import Games from "./components/Games";
+import Channel from "./components/Channel";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends Component {
           <Landing path="/" />
           <Streams path="streams" />
           <Games path="games" />
+          <Channel path="channel/:channelName" />
         </Router>
       </div>
     );
