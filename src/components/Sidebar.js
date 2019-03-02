@@ -27,7 +27,7 @@ class Sidebar extends Component {
             <NavLink to="/">⇨ Home Page</NavLink>
           </li>
           <li>
-            <NavLink to="streams">⇨ Streams</NavLink>
+            <NavLink to="streams/all">⇨ Streams</NavLink>
           </li>
           <li>
             <NavLink to="games">⇨ Games</NavLink>
