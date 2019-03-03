@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import runtimeEnv from "@mars/heroku-js-runtime-env";
+import "./Games.css";
 
 class Games extends Component {
   constructor(props) {
