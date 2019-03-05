@@ -13,19 +13,33 @@ class Streams extends Component {
   }
   componentDidMount() {
     const env = runtimeEnv();
-    var url = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
-      env.REACT_APP_CLIENT_ID
-    }`;
+    var url;
     let self = this;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        self.setState({
-          allStreams: data.streams
-        });
-      })
-      .catch(error => console.log(error));
+    if (this.props.category === "all") {
+      url = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
+        env.REACT_APP_CLIENT_ID
+      }`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            allStreams: data.streams
+          });
+        })
+        .catch(error => console.log(error));
+    } else {
+      url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
+        this.props.category
+      }&client_id=${env.REACT_APP_CLIENT_ID}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            allStreams: data.streams
+          });
+        })
+        .catch(error => console.log(error));
+    }
   }
   render() {
     let state = this.state;
