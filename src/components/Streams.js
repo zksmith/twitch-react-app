@@ -14,7 +14,6 @@ class Streams extends Component {
   componentDidMount() {
     const env = runtimeEnv();
     var url;
-    let self = this;
     if (this.props.category === "all") {
       url = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
         env.REACT_APP_CLIENT_ID
@@ -43,18 +42,23 @@ class Streams extends Component {
   }
   render() {
     let state = this.state;
-    return (
-      <div className="streams">
-        {state.allStreams.map(stream => (
-          <div className="stream-card" key={stream.channel.name}>
-            <Link to={`/channel/${stream.channel.name}`}>
-              <img src={stream.preview.medium} />
-              <p>{stream.channel.name}</p>
-            </Link>
-          </div>
-        ))}
-      </div>
-    );
+    if (this.state.allStreams.length > 0) {
+      console.log([]);
+      return (
+        <div className="streams">
+          {state.allStreams.map(stream => (
+            <div className="stream-card" key={stream.channel.name}>
+              <Link to={`/channel/${stream.channel.name}`}>
+                <img src={stream.preview.medium} />
+                <p>{stream.channel.name}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      return <p>Loading...</p>;
+    }
   }
 }
 
