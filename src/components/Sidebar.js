@@ -1,20 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import "./Sidebar.css";
-
-//used to give active styling to active sidebar link
-const NavLink = props => (
-  <Link
-    {...props}
-    getProps={({ isCurrent }) => {
-      return {
-        style: {
-          color: isCurrent ? "#b9c1b6" : "inherit"
-        }
-      };
-    }}
-  />
-);
+import NavLink from "./NavLink.js";
 
 class Sidebar extends Component {
   render() {
