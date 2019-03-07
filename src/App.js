@@ -20,7 +20,9 @@ class App extends Component {
         <Sidebar />
         <Router>
           <Landing path="/" />
-          <Streams path="streams/:category" />
+          <Streams path="streams">
+            <Streams path=":category" />
+          </Streams>
           <Games path="games" />
           <Channel path="channel/:channelName" />
         </Router>
