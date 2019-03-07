@@ -8,14 +8,14 @@ class Streams extends Component {
     super(props);
 
     this.state = {
+      category: "",
       allStreams: []
     };
   }
   componentDidMount() {
     const env = runtimeEnv();
     var url;
-    var category = this.props["*"];
-    if (category === "") {
+    if (this.props["*"] === "") {
       url = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
         env.REACT_APP_CLIENT_ID
       }`;
@@ -28,9 +28,9 @@ class Streams extends Component {
         })
         .catch(error => console.log(error));
     } else {
-      url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${category}&client_id=${
-        env.REACT_APP_CLIENT_ID
-      }`;
+      url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
+        this.props["*"]
+      }&client_id=${env.REACT_APP_CLIENT_ID}`;
       fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -40,11 +40,12 @@ class Streams extends Component {
         })
         .catch(error => console.log(error));
     }
+    this.setState({ category: this.props["*"] });
   }
 
   render() {
     let state = this.state;
-    if (this.state.allStreams.length > 0) {
+    if (this.state.allStreams) {
       return (
         <div className="streams">
           {state.allStreams.map(stream => (
