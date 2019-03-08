@@ -1,6 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 import "./Sidebar.css";
-import NavLink from "./NavLink.js";
+
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        style: {
+          color: isCurrent ? "#b9c1b6" : "inherit"
+        }
+      };
+    }}
+  />
+);
 
 class Sidebar extends Component {
   render() {
