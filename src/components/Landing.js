@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+import { getFeaturedStreams } from "./utility/TwitchAPI";
 import "./Landing.css";
 import Video from "./Video.js";
 
@@ -13,22 +13,12 @@ class Landing extends Component {
     };
   }
   componentDidMount() {
-    const env = runtimeEnv();
-    var url = `https://api.twitch.tv/kraken/streams/featured?client_id=${
-      env.REACT_APP_CLIENT_ID
-    }`;
-    let self = this;
-    /*Pull featured streams
-     *Set current Stream add rest of streams to array */
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        self.setState({
-          currentStream: data.featured[0].stream.channel.name,
-          allFeaturedStreams: data.featured
-        });
-      })
-      .catch(error => console.log(error));
+    getFeaturedStreams.then(result => {
+      this.setState({
+        allFeaturedStreams: result,
+        currentStream: result[0].stream.channel.name
+      });
+    });
   }
   render() {
     let state = this.state;

@@ -8,6 +8,17 @@ const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${
 const ALLSTREAMSURL = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
   ENV.REACT_APP_CLIENT_ID
 }`;
+const FEATUREDSTREAMSURL = `https://api.twitch.tv/kraken/streams/featured?client_id=${
+  ENV.REACT_APP_CLIENT_ID
+}`;
+
+const getFeaturedStreams = fetch(FEATUREDSTREAMSURL)
+  .then(response => response.json())
+  .then(data => {
+    return data.featured;
+  })
+  .catch(error => console.log(error));
+
 const getGames = fetch(GAMESURL)
   .then(response => response.json())
   .then(data => {
@@ -33,4 +44,4 @@ const getStreamsForGame = game => {
     })
     .catch(error => console.log(error));
 };
-export { getGames, getAllStreams, getStreamsForGame };
+export { getGames, getAllStreams, getStreamsForGame, getFeaturedStreams };
