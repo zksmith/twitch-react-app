@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
 import { Link } from "@reach/router";
+import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 
 class Streams extends Component {
@@ -13,33 +13,19 @@ class Streams extends Component {
     };
   }
   componentDidMount() {
-    const env = runtimeEnv();
     var url;
     if (this.props["*"] === "") {
-      url = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
-        env.REACT_APP_CLIENT_ID
-      }`;
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            allStreams: data.streams
-          });
-        })
-        .catch(error => console.log(error));
+      getAllStreams.then(result => {
+        this.setState({
+          allStreams: result
+        });
+      });
     } else {
-      url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
-        this.props["*"]
-      }&client_id=${env.REACT_APP_CLIENT_ID}`;
-
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            allStreams: data.streams
-          });
-        })
-        .catch(error => console.log(error));
+      getStreamsForGame(this.props["*"]).then(result => {
+        this.setState({
+          allStreams: result
+        });
+      });
     }
   }
 
@@ -59,19 +45,11 @@ class Streams extends Component {
         </div>
       );
     } else {
-      const env = runtimeEnv();
-      var url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
-        this.props["*"]
-      }&client_id=${env.REACT_APP_CLIENT_ID}`;
-
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            allStreams: data.streams
-          });
-        })
-        .catch(error => console.log(error));
+      getStreamsForGame(this.props["*"]).then(result => {
+        this.setState({
+          allStreams: result
+        });
+      });
       return <p>Loading...</p>;
     }
   }
