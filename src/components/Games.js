@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
+import { getGames } from "./utility/TwitchAPI";
 import "./Games.css";
 
 class Games extends Component {
@@ -12,20 +12,9 @@ class Games extends Component {
     };
   }
   componentDidMount() {
-    const env = runtimeEnv();
-    var url = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${
-      env.REACT_APP_CLIENT_ID
-    }`;
-    let self = this;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        self.setState({
-          allGames: data.top
-        });
-      })
-      .catch(error => console.log(error));
+    getGames.then(result => {
+      this.setState({ allGames: result });
+    });
   }
   render() {
     let state = this.state;
