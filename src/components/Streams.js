@@ -31,6 +31,7 @@ class Streams extends Component {
       url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
         this.props["*"]
       }&client_id=${env.REACT_APP_CLIENT_ID}`;
+
       fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -40,7 +41,6 @@ class Streams extends Component {
         })
         .catch(error => console.log(error));
     }
-    this.setState({ category: this.props["*"] });
   }
 
   render() {
@@ -59,6 +59,19 @@ class Streams extends Component {
         </div>
       );
     } else {
+      const env = runtimeEnv();
+      var url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${
+        this.props["*"]
+      }&client_id=${env.REACT_APP_CLIENT_ID}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            allStreams: data.streams
+          });
+        })
+        .catch(error => console.log(error));
       return <p>Loading...</p>;
     }
   }
