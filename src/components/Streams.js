@@ -31,14 +31,16 @@ class Streams extends Component {
 
   render() {
     let state = this.state;
-    if (this.state.allStreams) {
+    if (state.allStreams) {
       return (
         <div className="streams">
           {state.allStreams.map(stream => (
             <div className="stream-card" key={stream.channel.name}>
               <Link to={`/channel/${stream.channel.name}`}>
                 <img src={stream.preview.medium} />
+                <p>{stream.channel.status}</p>
                 <p>{stream.channel.name}</p>
+                <p>{stream.game}</p>
               </Link>
             </div>
           ))}
