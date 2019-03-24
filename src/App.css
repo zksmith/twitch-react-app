@@ -16,6 +16,7 @@ body,
 .main-wrapper {
   position: absolute;
   left: 15vw;
+  margin: 12px 20px;
 }
 a {
   text-decoration: none;
