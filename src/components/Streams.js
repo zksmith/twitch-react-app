@@ -38,7 +38,7 @@ class Streams extends Component {
             <div className="stream-card" key={stream.channel.name}>
               <Link to={`/channel/${stream.channel.name}`}>
                 <img src={stream.preview.medium} />
-                <p>{stream.channel.status}</p>
+                <h3>{stream.channel.status}</h3>
                 <p>{stream.channel.name}</p>
                 <p>{stream.game}</p>
               </Link>

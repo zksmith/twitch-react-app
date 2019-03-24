@@ -11,7 +11,7 @@ class Channel extends Component {
     return (
       <div className="main-content">
         <div className="featured-streamer">
-          <Video currentStream={this.props.channelName} />;
+          <Video currentStream={this.props.channelName} />
         </div>
       </div>
     );

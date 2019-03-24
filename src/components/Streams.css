@@ -3,3 +3,13 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.stream-card {
+  flex: 1 0 auto;
+  max-width: 50%;
+  width: 20rem;
+}
+.stream-card h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

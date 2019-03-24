@@ -13,6 +13,10 @@ body,
   padding: 6px;
   color: #b9c1b6;
 }
+.main-wrapper {
+  position: absolute;
+  left: 15vw;
+}
 a {
   text-decoration: none;
   color: inherit;

@@ -18,14 +18,16 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar />
-        <Router>
-          <Landing path="/" />
-          <Streams path="streams">
-            <Streams path=":category" />
-          </Streams>
-          <Games path="games" />
-          <Channel path="channel/:channelName" />
-        </Router>
+        <main className="main-wrapper">
+          <Router>
+            <Landing path="/" />
+            <Streams path="streams">
+              <Streams path=":category" />
+            </Streams>
+            <Games path="games" />
+            <Channel path="channel/:channelName" />
+          </Router>
+        </main>
       </div>
     );
   }
