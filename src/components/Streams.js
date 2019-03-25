@@ -15,6 +15,7 @@ class Streams extends Component {
   getGames(category) {
     if (category === "") {
       getAllStreams.then(result => {
+        console.log(result);
         this.setState({
           allStreams: result
         });
@@ -46,8 +47,15 @@ class Streams extends Component {
             <div className="stream-card" key={stream.channel.name}>
               <Link to={`/channel/${stream.channel.name}`}>
                 <img src={stream.preview.medium} />
+              </Link>
+              <img className="channel-logo" src={stream.channel.logo} />
+              <Link to={`/channel/${stream.channel.name}`}>
                 <h3>{stream.channel.status}</h3>
+              </Link>
+              <Link to={`/channel/${stream.channel.name}`}>
                 <p>{stream.channel.name}</p>
+              </Link>
+              <Link to={`/streams/${stream.game}`}>
                 <p>{stream.game}</p>
               </Link>
             </div>

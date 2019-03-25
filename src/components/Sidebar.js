@@ -31,7 +31,7 @@ class Sidebar extends Component {
           <li>
             <NavLink to="games">⇨ Games</NavLink>
           </li>
-          <li>⇨ Twitch Store</li>
+          <li>⇨ Top Clips</li>
           <li>⇨ Get Desktop</li>
         </ul>
       </nav>
