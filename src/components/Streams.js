@@ -8,27 +8,35 @@ class Streams extends Component {
     super(props);
 
     this.state = {
-      category: "",
       allStreams: []
     };
+    this.getGames = this.getGames.bind(this);
   }
-  componentDidMount() {
-    var url;
-    if (this.props["*"] === "") {
+  getGames(category) {
+    if (category === "") {
       getAllStreams.then(result => {
         this.setState({
           allStreams: result
         });
       });
     } else {
-      getStreamsForGame(this.props["*"]).then(result => {
+      getStreamsForGame(category).then(result => {
         this.setState({
           allStreams: result
         });
       });
     }
   }
-
+  componentDidMount() {
+    // this.props[*] gets the url param after /streams
+    this.getGames(this.props["*"]);
+  }
+  componentWillReceiveProps(nextProps) {
+    /* handling for user clicking the "Streams" navbar link
+     * while browsing streams for specific game */
+    this.setState({ allStreams: [] });
+    this.getGames(nextProps.path);
+  }
   render() {
     let state = this.state;
     if (state.allStreams) {
@@ -47,11 +55,8 @@ class Streams extends Component {
         </div>
       );
     } else {
-      getStreamsForGame(this.props["*"]).then(result => {
-        this.setState({
-          allStreams: result
-        });
-      });
+      //Handing for twitch api 503ing
+      this.getGames(this.props["*"]);
       return <p>Loading...</p>;
     }
   }
