@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
+import StreamCard from "./StreamCard";
 
 class Streams extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class Streams extends Component {
   getGames(category) {
     if (category === "") {
       getAllStreams.then(result => {
-        console.log(result);
         this.setState({
           allStreams: result
         });
@@ -44,21 +44,7 @@ class Streams extends Component {
       return (
         <div className="streams">
           {state.allStreams.map(stream => (
-            <div className="stream-card" key={stream.channel.name}>
-              <Link to={`/channel/${stream.channel.name}`}>
-                <img src={stream.preview.medium} />
-              </Link>
-              <img className="channel-logo" src={stream.channel.logo} />
-              <Link to={`/channel/${stream.channel.name}`}>
-                <h3>{stream.channel.status}</h3>
-              </Link>
-              <Link to={`/channel/${stream.channel.name}`}>
-                <p>{stream.channel.name}</p>
-              </Link>
-              <Link to={`/streams/${stream.game}`}>
-                <p>{stream.game}</p>
-              </Link>
-            </div>
+            <StreamCard stream={stream} key={stream.channel.name} />
           ))}
         </div>
       );
