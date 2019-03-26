@@ -4,6 +4,8 @@ import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
 
+let apiErrorCount = 0;
+
 class Streams extends Component {
   constructor(props) {
     super(props);
@@ -48,8 +50,11 @@ class Streams extends Component {
           ))}
         </div>
       );
+    } else if (apiErrorCount > 50) {
+      return <p>Twitch API is having troubles right now</p>;
     } else {
       //Handing for twitch api 503ing
+      apiErrorCount++;
       this.getGames(this.props["*"]);
       return <p>Loading...</p>;
     }
