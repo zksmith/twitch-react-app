@@ -4,12 +4,32 @@
   width: 19rem;
   overflow: hidden;
   padding: 0 10px;
+  margin-bottom: 10px;
 }
 .stream-card h3 {
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  margin: 0;
+  color: rgb(185, 193, 182);
 }
 .channel-logo {
   width: 40px;
+  align-self: baseline;
+}
+.streamcard-block {
+  overflow: hidden;
+  display: flex;
+  text-overflow: ellipsis;
+}
+.streamcard-text {
+  margin: 0 5px;
+}
+.streamcard-text a:hover,
+.streamcard-text p:hover,
+.streamcard-text h3:hover {
+  color: #b19dd8;
+}
+.streamcard-text p {
+  margin: 5px;
+  color: #505455;
 }

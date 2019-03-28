@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
@@ -53,7 +52,7 @@ class Streams extends Component {
     } else if (apiErrorCount > 50) {
       return <p>Twitch API is having troubles right now</p>;
     } else {
-      //Handing for twitch api 503ing
+      //Handing for twitch api server error
       apiErrorCount++;
       this.getGames(this.props["*"]);
       return <p>Loading...</p>;
