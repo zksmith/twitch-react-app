@@ -17,6 +17,15 @@ body,
   position: absolute;
   left: 15vw;
   margin: 12px 20px;
+  font-size: 0.8rem;
+}
+.main-wrapper p {
+  color: #bdbdbd;
+}
+.main-wrapper a:hover,
+.main-wrapper p:hover,
+.main-wrapper h3:hover {
+  color: #b19dd8;
 }
 a {
   text-decoration: none;
