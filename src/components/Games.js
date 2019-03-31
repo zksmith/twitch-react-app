@@ -20,7 +20,6 @@ class Games extends Component {
   }
   render() {
     let state = this.state;
-    console.log(state.allGames);
     return (
       <div className="games">
         {state.allGames.map(game => (

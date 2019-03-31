@@ -18,6 +18,7 @@
 }
 .streamcard-block {
   display: flex;
+  margin-top: 0.2rem;
 }
 .streamcard-text {
   margin-left: 5px;
@@ -25,4 +26,10 @@
 }
 .streamcard-text p {
   margin: 0.3rem 0;
+}
+@media (max-width: 550px) {
+  .stream-card {
+    max-width: 100%;
+    padding: 0;
+  }
 }

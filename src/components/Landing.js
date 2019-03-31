@@ -24,7 +24,7 @@ class Landing extends Component {
     let state = this.state;
     if (state.currentStream !== "") {
       return (
-        <div className="main-content">
+        <div>
           <div className="featured-streamer">
             <Video currentStream={state.currentStream} />
           </div>
