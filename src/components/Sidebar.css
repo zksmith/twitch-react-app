@@ -12,6 +12,8 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
+  left: 0;
+  top: 0;
 }
 .sidebar-links {
   list-style: none;

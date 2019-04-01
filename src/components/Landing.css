@@ -4,15 +4,17 @@
   overflow-x: scroll;
   margin: 26px;
 }
-.video {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+.iframe-container {
   overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
 }
-.video iframe {
+
+.iframe-container iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
 }

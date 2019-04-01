@@ -24,10 +24,8 @@ class Landing extends Component {
     let state = this.state;
     if (state.currentStream !== "") {
       return (
-        <div>
-          <div className="featured-streamer">
-            <Video currentStream={state.currentStream} />
-          </div>
+        <div className="iframe-container">
+          <Video currentStream={state.currentStream} />
           {/* <div className="thumbnail-row">
             {state.allFeaturedStreams.map(stream => (
               <img

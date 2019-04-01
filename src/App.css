@@ -2,20 +2,19 @@ html,
 body,
 #root,
 .App {
-  height: 100%;
+  min-height: 100%;
 }
 .App {
-  display: flex;
+  padding-left: 15vw;
 }
 .btn {
   background-color: #623fa5;
   border: none;
   padding: 6px;
-  color: #b9c1b6;
+  color: #bdbdbd;
 }
 .main-wrapper {
-  position: absolute;
-  left: 15vw;
+  position: relative;
   margin: 12px 20px;
   font-size: 0.8rem;
 }
@@ -40,7 +39,7 @@ a:hover {
     left: 4rem;
   }
 }
-
+/*scrolbar styles */
 ::-webkit-scrollbar {
   width: 12px;
 }
