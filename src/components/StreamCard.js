@@ -5,10 +5,17 @@ import "./StreamCard.css";
 const StreamCard = props => (
   <div className="stream-card">
     <Link to={`/channel/${props.stream.channel.name}`}>
-      <img src={props.stream.preview.medium} />
+      <img
+        src={props.stream.preview.medium}
+        alt={`${props.stream.channel.name} playing ${props.stream.game}`}
+      />
     </Link>
     <div className="streamcard-block">
-      <img className="channel-logo" src={props.stream.channel.logo} />
+      <img
+        className="channel-logo"
+        src={props.stream.channel.logo}
+        alt={props.stream.channel.name}
+      />
       <div className="streamcard-text">
         <Link to={`/channel/${props.stream.channel.name}`}>
           <h3>{props.stream.channel.status}</h3>

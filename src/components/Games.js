@@ -25,7 +25,7 @@ class Games extends Component {
         {state.allGames.map(game => (
           <div className="game-card" key={game.game.name}>
             <Link to={`/streams/${game.game.name}`}>
-              <img src={game.game.box.large} />
+              <img src={game.game.box.large} alt={game.game.name} />
               <h3>{game.game.name}</h3>
               <p>{kFormatter(game.viewers)} viewers</p>
             </Link>

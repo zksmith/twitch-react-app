@@ -22,8 +22,7 @@ class Landing extends Component {
   }
   render() {
     let state = this.state;
-    {
-      /* <div className="thumbnail-row">
+    /* <div className="thumbnail-row">
     {state.allFeaturedStreams.map(stream => (
         <img
           src={stream.stream.preview.medium}
@@ -31,7 +30,6 @@ class Landing extends Component {
         />
       ))}
     </div> */
-    }
     if (state.currentStream !== "") {
       return <Video currentStream={state.currentStream} />;
     } else {
