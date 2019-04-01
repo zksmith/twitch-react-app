@@ -1,13 +1,11 @@
 .logo {
   font-family: "Major Mono Display", monospace;
-  color: #b9c1b6;
   padding-bottom: 2rem;
 }
 .sidebar {
   width: 15vw;
   height: 100%;
-  background: #0e1b22;
-  color: #505455;
+  background: #1e1f26;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,12 +16,13 @@
 .sidebar-links {
   list-style: none;
   padding: 0;
+  color: #c5c8d4;
 }
 .sidebar-links li {
   padding: 15px;
 }
 .sidebar-links .active {
-  color: #b9c1b6;
+  color: white;
 }
 .sidebar-links a:hover {
   color: #b9c1b6;

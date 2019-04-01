@@ -22,20 +22,18 @@ class Landing extends Component {
   }
   render() {
     let state = this.state;
+    {
+      /* <div className="thumbnail-row">
+    {state.allFeaturedStreams.map(stream => (
+        <img
+          src={stream.stream.preview.medium}
+          alt={stream.stream.channel.display_name}
+        />
+      ))}
+    </div> */
+    }
     if (state.currentStream !== "") {
-      return (
-        <div className="iframe-container">
-          <Video currentStream={state.currentStream} />
-          {/* <div className="thumbnail-row">
-            {state.allFeaturedStreams.map(stream => (
-              <img
-                src={stream.stream.preview.medium}
-                alt={stream.stream.channel.display_name}
-              />
-            ))}
-          </div> */}
-        </div>
-      );
+      return <Video currentStream={state.currentStream} />;
     } else {
       return <p>Loading...</p>;
     }

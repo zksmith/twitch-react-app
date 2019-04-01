@@ -5,13 +5,18 @@ body,
   min-height: 100%;
 }
 .App {
-  padding-left: 15vw;
+  padding-left: 15vw; /*match sidebar width */
+}
+@media (max-width: 979px) {
+  .App {
+    padding-left: 4rem; /*match sidebar width */
+  }
 }
 .btn {
   background-color: #623fa5;
   border: none;
   padding: 6px;
-  color: #bdbdbd;
+  color: white;
 }
 .main-wrapper {
   position: relative;
@@ -34,11 +39,6 @@ a:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 979px) {
-  .main-wrapper {
-    left: 4rem;
-  }
-}
 /*scrolbar styles */
 ::-webkit-scrollbar {
   width: 12px;
