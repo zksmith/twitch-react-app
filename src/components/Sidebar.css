@@ -36,7 +36,7 @@
   .sidebar {
     width: 4rem;
   }
-  .sidebar li {
+  .sidebar .sidebar-text {
     display: none;
   }
   .stream-btn {

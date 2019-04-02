@@ -2,9 +2,7 @@ import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 const ENV = runtimeEnv();
 
-const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${
-  ENV.REACT_APP_CLIENT_ID
-}`;
+const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100`;
 const ALLSTREAMSURL = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
   ENV.REACT_APP_CLIENT_ID
 }`;
