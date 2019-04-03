@@ -12,6 +12,9 @@ class Landing extends Component {
       allFeaturedStreams: []
     };
   }
+  setCurrentStream(channelName) {
+    this.setState({ currentStream: channelName });
+  }
   componentDidMount() {
     getFeaturedStreams.then(result => {
       this.setState({
@@ -28,11 +31,16 @@ class Landing extends Component {
           <Video currentStream={state.currentStream} />
           <div className="thumbnail-row">
             {state.allFeaturedStreams.slice(0, 6).map(stream => (
-              <img
-                src={stream.image}
-                alt={stream.stream.channel.display_name}
-                key={stream.stream.channel.display_name}
-              />
+              <div className="img-container">
+                <img
+                  src={stream.image}
+                  alt={stream.stream.channel.display_name}
+                  key={stream.stream.channel.display_name}
+                  onClick={event =>
+                    this.setCurrentStream(stream.stream.channel.display_name)
+                  }
+                />
+              </div>
             ))}
           </div>
         </div>

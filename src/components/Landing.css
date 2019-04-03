@@ -8,8 +8,12 @@
   position: absolute;
   width: 100%;
 }
-.thumbnail-row img {
+.thumbnail-row .img-container {
   width: 16rem;
   max-width: 50%;
   margin: 0.3rem 0;
+  cursor: pointer;
+}
+.thumbnail-row img {
+  width: 100%;
 }

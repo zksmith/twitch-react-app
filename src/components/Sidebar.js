@@ -44,6 +44,7 @@ class Sidebar extends Component {
             <a
               target="_blank"
               href="https://github.com/zksmith/twitch-react-app"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-github" />{" "}
               <span className="sidebar-text">Github</span>

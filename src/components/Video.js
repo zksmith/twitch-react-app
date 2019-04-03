@@ -6,7 +6,7 @@ const Video = props => (
     <iframe
       src={`https://player.twitch.tv/?channel=${
         props.currentStream
-      }&muted=true`}
+      }&muted=false`}
       title={`featured streamer ${props.currentStream}`}
       frameBorder="0"
     />
