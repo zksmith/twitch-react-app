@@ -13,6 +13,10 @@
   max-width: 50%;
   margin: 0.3rem 0;
   cursor: pointer;
+  border: 0;
+  padding: 0;
+  background: inherit;
+  color: inherit;
 }
 .thumbnail-row img {
   width: 100%;

@@ -9,20 +9,24 @@ class Games extends Component {
     super(props);
 
     this.state = {
-      allGames: []
+      allGames: [],
+      loading: true
     };
   }
 
   componentDidMount() {
     getGames.then(result => {
-      this.setState({ allGames: result });
+      this.setState({ allGames: result, loading: false });
     });
   }
   render() {
-    let state = this.state;
+    let { allGames, loading } = this.state;
+    if (loading) {
+      return <h1>loading...</h1>;
+    }
     return (
       <div className="games">
-        {state.allGames.map(game => (
+        {allGames.map(game => (
           <div className="game-card" key={game.game.name}>
             <Link to={`/streams/${game.game.name}`}>
               <img src={game.game.box.large} alt={game.game.name} />
