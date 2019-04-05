@@ -31,7 +31,7 @@ class Games extends Component {
           <div className="game-card" key={game.game.name}>
             <Link to={`/streams/${game.game.name}`}>
               <img src={game.game.box.large} alt={game.game.name} />
-              <h3>{game.game.name}</h3>
+              <h3 title={game.game.name}>{game.game.name}</h3>
               <p>{kFormatter(game.viewers)} viewers</p>
             </Link>
           </div>

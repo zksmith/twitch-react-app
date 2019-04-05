@@ -17,7 +17,10 @@ const StreamCard = props => (
         alt={props.stream.channel.name}
       />
       <div className="streamcard-text">
-        <Link to={`/channel/${props.stream.channel.name}`}>
+        <Link
+          to={`/channel/${props.stream.channel.name}`}
+          title={props.stream.channel.status}
+        >
           <h3>{props.stream.channel.status}</h3>
         </Link>
         <Link to={`/channel/${props.stream.channel.name}`}>
