@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
+import Loading from "./Loading";
 
 let apiErrorCount = 0;
 
@@ -55,7 +56,7 @@ class Streams extends Component {
       //Handing for twitch api server error
       apiErrorCount++;
       this.getGames(this.props["*"]);
-      return <p>Loading...</p>;
+      return <Loading />;
     }
   }
 }

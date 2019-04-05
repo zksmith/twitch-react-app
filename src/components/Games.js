@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getGames } from "./utility/TwitchAPI";
 import { kFormatter } from "./utility/utility";
+import Loading from "./Loading.js";
 import "./Games.css";
 
 class Games extends Component {
@@ -22,7 +23,7 @@ class Games extends Component {
   render() {
     let { allGames, loading } = this.state;
     if (loading) {
-      return <h1>loading...</h1>;
+      return <Loading />;
     }
     return (
       <div className="games">

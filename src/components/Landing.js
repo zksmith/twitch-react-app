@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getFeaturedStreams } from "./utility/TwitchAPI";
 import "./Landing.css";
 import Video from "./Video.js";
+import Loading from "./Loading.js";
 
 class Landing extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Landing extends Component {
   render() {
     let { loading, allFeaturedStreams, currentStream } = this.state;
     if (loading) {
-      return <h1> Loading...</h1>;
+      return <Loading />;
     }
     return (
       <div>
