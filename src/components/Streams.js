@@ -34,11 +34,12 @@ class Streams extends Component {
     // this.props[*] gets the url param after /streams
     this.getGames(this.props["*"]);
   }
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     /* handling for user clicking the "Streams" navbar link
      * while browsing streams for specific game */
-    this.setState({ allStreams: [] });
-    this.getGames(nextProps.path);
+    if (prevProps !== this.props) {
+      this.getGames(this.props["*"]);
+    }
   }
   render() {
     let state = this.state;
