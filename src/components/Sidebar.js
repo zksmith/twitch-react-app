@@ -23,19 +23,19 @@ class Sidebar extends Component {
         <button className="btn stream-btn">● Start Stream </button>
         <ul className="sidebar-links">
           <li>
-            <NavLink to="/">
+            <NavLink to="/" title="Home Page">
               <i className="fas fa-home" />{" "}
               <span className="sidebar-text">Home Page</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="streams">
+            <NavLink to="streams" title="Streams">
               <i className="fas fa-video" />{" "}
               <span className="sidebar-text">Streams</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="games">
+            <NavLink to="games" title="Games">
               <i className="fas fa-gamepad" />{" "}
               <span className="sidebar-text"> Games</span>
             </NavLink>
@@ -45,6 +45,7 @@ class Sidebar extends Component {
               target="_blank"
               href="https://github.com/zksmith/twitch-react-app"
               rel="noopener noreferrer"
+              title="Github"
             >
               <i className="fab fa-github" />{" "}
               <span className="sidebar-text">Github</span>
