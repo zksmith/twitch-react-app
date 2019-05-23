@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import "./StreamCard.css";
+import { kFormatter } from "./utility/utility";
 
 const StreamCard = props => (
   <div className="stream-card">
@@ -24,7 +25,9 @@ const StreamCard = props => (
           <h3>{props.stream.channel.status}</h3>
         </Link>
         <Link to={`/channel/${props.stream.channel.name}`}>
-          <p>{props.stream.channel.name}</p>
+          <p>{`${props.stream.channel.name} | ${kFormatter(
+            props.stream.viewers
+          )} viewers`}</p>
         </Link>
         <Link to={`/streams/${props.stream.game}`}>
           <p>{props.stream.game}</p>
