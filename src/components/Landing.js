@@ -18,13 +18,15 @@ class Landing extends Component {
     this.setState({ currentStream: channelName });
   }
   componentDidMount() {
-    getFeaturedStreams.then(result => {
-      this.setState({
-        allFeaturedStreams: result,
-        currentStream: result[0].stream.channel.name,
-        loading: false
-      });
-    });
+    getFeaturedStreams()
+      .then(({ featured }) => {
+        this.setState({
+          allFeaturedStreams: featured,
+          currentStream: featured[0].stream.channel.name,
+          loading: false
+        });
+      })
+      .catch(e => console.error(e));
   }
   render() {
     let { loading, allFeaturedStreams, currentStream } = this.state;

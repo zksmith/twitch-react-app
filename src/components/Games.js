@@ -16,7 +16,7 @@ class Games extends Component {
   }
 
   componentDidMount() {
-    getGames.then(result => {
+    getGames().then(result => {
       this.setState({ allGames: result, loading: false });
     });
   }

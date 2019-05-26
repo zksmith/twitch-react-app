@@ -17,7 +17,7 @@ class Streams extends Component {
   }
   getGames(category) {
     if (category === "") {
-      getAllStreams.then(result => {
+      getAllStreams().then(result => {
         this.setState({
           allStreams: result
         });

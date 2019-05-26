@@ -12,36 +12,30 @@ const FEATUREDSTREAMSURL = `https://api.twitch.tv/kraken/streams/featured?client
   ENV.REACT_APP_CLIENT_ID
 }`;
 
-const getFeaturedStreams = fetch(FEATUREDSTREAMSURL)
-  .then(response => response.json())
-  .then(data => {
-    return data.featured;
-  })
-  .catch(error => console.log(error));
+const getFeaturedStreams = async () => {
+  const response = await fetch(FEATUREDSTREAMSURL);
+  const result = await response.json();
+  return result;
+};
 
-const getGames = fetch(GAMESURL)
-  .then(response => response.json())
-  .then(data => {
-    return data.top;
-  })
-  .catch(error => console.log(error));
+const getGames = async () => {
+  const response = await fetch(GAMESURL);
+  const result = await response.json();
+  return result.top;
+};
 
-const getAllStreams = fetch(ALLSTREAMSURL)
-  .then(response => response.json())
-  .then(data => {
-    return data.streams;
-  })
-  .catch(error => console.log(error));
+const getAllStreams = async () => {
+  const response = await fetch(ALLSTREAMSURL);
+  const result = await response.json();
+  return result.streams;
+};
 
-const getStreamsForGame = game => {
+const getStreamsForGame = async game => {
   let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${
     ENV.REACT_APP_CLIENT_ID
   }`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      return data.streams;
-    })
-    .catch(error => console.log(error));
+  const response = await fetch(url);
+  const result = await response.json();
+  return result.streams;
 };
 export { getGames, getAllStreams, getStreamsForGame, getFeaturedStreams };
