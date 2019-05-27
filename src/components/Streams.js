@@ -16,6 +16,7 @@ class Streams extends Component {
     this.getGames = this.getGames.bind(this);
   }
   getGames(category) {
+    //if no game provided in url fetch top streams
     if (category === "") {
       getAllStreams().then(result => {
         this.setState({
