@@ -37,12 +37,18 @@ class Landing extends Component {
       <div>
         <Video currentStream={currentStream} />
         <div className="thumbnail-row">
-          {allFeaturedStreams.slice(0, 6).map(({ image, display_name }) => (
+          {allFeaturedStreams.slice(0, 6).map(({ image, stream }) => (
             <button
               className="img-container"
-              onClick={event => this.setCurrentStream(display_name)}
+              onClick={event =>
+                this.setCurrentStream(stream.channel.display_name)
+              }
             >
-              <img src={image} alt={display_name} key={display_name} />
+              <img
+                src={image}
+                alt={stream.channel.display_name}
+                key={stream.channel.display_name}
+              />
             </button>
           ))}
         </div>
