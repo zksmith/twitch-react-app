@@ -7,15 +7,8 @@ import Loading from "./Loading";
 let apiErrorCount = 0;
 
 class Streams extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      allStreams: []
-    };
-    this.getGames = this.getGames.bind(this);
-  }
-  getGames(category) {
+  state = { allStreams: [] };
+  getGames = category => {
     //if no game provided in url fetch top streams
     if (category === "") {
       getAllStreams().then(result => {
@@ -30,7 +23,7 @@ class Streams extends Component {
         });
       });
     }
-  }
+  };
   componentDidMount() {
     // this.props[*] gets the url param after /streams
     this.getGames(this.props["*"]);

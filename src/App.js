@@ -16,7 +16,7 @@ class App extends Component {
           <Router>
             <Landing path="/" />
             <Streams path="streams">
-              <Streams path=":category" />
+              <Streams path="/:category" />
             </Streams>
             <Games path="games" />
             <Channel path="channel/:channelName" />

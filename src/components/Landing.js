@@ -5,18 +5,10 @@ import Video from "./Video.js";
 import Loading from "./Loading.js";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      currentStream: "",
-      allFeaturedStreams: []
-    };
-  }
-  setCurrentStream(channelName) {
+  state = { loading: true, currentStream: "", allFeaturedStreams: [] };
+  setCurrentStream = channelName => {
     this.setState({ currentStream: channelName });
-  }
+  };
   componentDidMount() {
     getFeaturedStreams()
       .then(({ featured }) => {
@@ -43,6 +35,7 @@ class Landing extends Component {
               onClick={event =>
                 this.setCurrentStream(stream.channel.display_name)
               }
+              key={stream.channel.display_name}
             >
               <img
                 src={image}

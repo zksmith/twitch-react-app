@@ -6,20 +6,14 @@ import Loading from "./Loading.js";
 import "./Games.css";
 
 class Games extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      allGames: [],
-      loading: true
-    };
-  }
+  state = { allGames: [], loading: true };
 
   componentDidMount() {
     getGames().then(result => {
       this.setState({ allGames: result, loading: false });
     });
   }
+
   render() {
     let { allGames, loading } = this.state;
     if (loading) {
