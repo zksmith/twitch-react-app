@@ -2,39 +2,37 @@ import React from "react";
 import { Link } from "@reach/router";
 import "./StreamCard.css";
 import { kFormatter } from "./utility/utility";
+import PropTypes from "prop-types";
 
-const StreamCard = props => (
+const StreamCard = ({ name, preview, game, logo, status, viewers }) => (
   <div className="stream-card">
-    <Link to={`/channel/${props.stream.channel.name}`}>
-      <img
-        src={props.stream.preview.medium}
-        alt={`${props.stream.channel.name} playing ${props.stream.game}`}
-      />
+    <Link to={`/channel/${name}`}>
+      <img src={preview} alt={`${name} playing ${game}`} />
     </Link>
     <div className="streamcard-block">
-      <img
-        className="channel-logo"
-        src={props.stream.channel.logo}
-        alt={props.stream.channel.name}
-      />
+      <img className="channel-logo" src={logo} alt={name} />
       <div className="streamcard-text">
-        <Link
-          to={`/channel/${props.stream.channel.name}`}
-          title={props.stream.channel.status}
-        >
-          <h3>{props.stream.channel.status}</h3>
+        <Link to={`/channel/${name}`} title={status}>
+          <h3>{status}</h3>
         </Link>
-        <Link to={`/channel/${props.stream.channel.name}`}>
-          <p>{`${props.stream.channel.name} | ${kFormatter(
-            props.stream.viewers
-          )} viewers`}</p>
+        <Link to={`/channel/${name}`}>
+          <p>{`${name} | ${kFormatter(viewers)} viewers`}</p>
         </Link>
-        <Link to={`/streams/${props.stream.game}`}>
-          <p>{props.stream.game}</p>
+        <Link to={`/streams/${game}`}>
+          <p>{game}</p>
         </Link>
       </div>
     </div>
   </div>
 );
+
+StreamCard.propTypes = {
+  name: PropTypes.string,
+  preview: PropTypes.string,
+  game: PropTypes.string,
+  logo: PropTypes.string,
+  status: PropTypes.string,
+  viewers: PropTypes.number
+};
 
 export default StreamCard;

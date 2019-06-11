@@ -41,7 +41,15 @@ class Streams extends Component {
       return (
         <div className="streams">
           {state.allStreams.map(stream => (
-            <StreamCard stream={stream} key={stream.channel.name} />
+            <StreamCard
+              name={stream.channel.name}
+              preview={stream.preview.medium}
+              game={stream.game}
+              logo={stream.channel.logo}
+              status={stream.channel.status}
+              viewers={stream.viewers}
+              key={stream.channel.name}
+            />
           ))}
         </div>
       );
