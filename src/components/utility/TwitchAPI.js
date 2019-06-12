@@ -24,18 +24,18 @@ const getGames = async () => {
   return result.top;
 };
 
-const getAllStreams = async () => {
-  const response = await fetch(ALLSTREAMSURL);
-  const result = await response.json();
-  return result.streams;
-};
-
 const getStreamsForGame = async game => {
-  let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${
-    ENV.REACT_APP_CLIENT_ID
-  }`;
-  const response = await fetch(url);
-  const result = await response.json();
-  return result.streams;
+  if (game) {
+    let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${
+      ENV.REACT_APP_CLIENT_ID
+    }`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result.streams;
+  } else {
+    const response = await fetch(ALLSTREAMSURL);
+    const result = await response.json();
+    return result.streams;
+  }
 };
-export { getGames, getAllStreams, getStreamsForGame, getFeaturedStreams };
+export { getGames, getStreamsForGame, getFeaturedStreams };

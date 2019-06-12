@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getAllStreams, getStreamsForGame } from "./utility/TwitchAPI";
+import { getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
 import Loading from "./Loading";
@@ -9,22 +9,13 @@ class Streams extends Component {
 
   getGames = category => {
     this.setState({ loading: true });
-    //if no game provided in url fetch top streams
-    if (category === "") {
-      getAllStreams().then(result => {
-        this.setState({
-          allStreams: result,
-          loading: false
-        });
+
+    getStreamsForGame(category).then(result => {
+      this.setState({
+        allStreams: result,
+        loading: false
       });
-    } else {
-      getStreamsForGame(category).then(result => {
-        this.setState({
-          allStreams: result,
-          loading: false
-        });
-      });
-    }
+    });
   };
 
   componentDidMount() {
@@ -36,7 +27,6 @@ class Streams extends Component {
     /* handling for user clicking the "Streams" navbar link
      * while browsing streams for specific game */
     if (prevProps["*"] !== this.props["*"]) {
-      console.log("here");
       this.getGames(this.props["*"]);
     }
   }
