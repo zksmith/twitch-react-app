@@ -29,21 +29,21 @@ class Landing extends Component {
       <div>
         <Video currentStream={currentStream} />
         <div className="thumbnail-row">
-          {allFeaturedStreams.slice(0, 6).map(({ image, stream }) => (
-            <button
-              className="img-container"
-              onClick={event =>
-                this.setCurrentStream(stream.channel.display_name)
-              }
-              key={stream.channel.display_name}
-            >
-              <img
-                src={image}
-                alt={stream.channel.display_name}
-                key={stream.channel.display_name}
-              />
-            </button>
-          ))}
+          {allFeaturedStreams
+            .slice(0, 6)
+            .map(({ image, stream: { channel } }) => (
+              <button
+                className="img-container"
+                onClick={event => this.setCurrentStream(channel.display_name)}
+                key={channel.display_name}
+              >
+                <img
+                  src={image}
+                  alt={channel.display_name}
+                  key={channel.display_name}
+                />
+              </button>
+            ))}
         </div>
       </div>
     );

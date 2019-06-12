@@ -4,43 +4,50 @@ import "./Streams.css";
 import StreamCard from "./StreamCard";
 import Loading from "./Loading";
 
-let apiErrorCount = 0;
-
 class Streams extends Component {
-  state = { allStreams: [] };
+  state = { allStreams: [], loading: false };
+
   getGames = category => {
+    this.setState({ loading: true });
     //if no game provided in url fetch top streams
     if (category === "") {
       getAllStreams().then(result => {
         this.setState({
-          allStreams: result
+          allStreams: result,
+          loading: false
         });
       });
     } else {
       getStreamsForGame(category).then(result => {
         this.setState({
-          allStreams: result
+          allStreams: result,
+          loading: false
         });
       });
     }
   };
+
   componentDidMount() {
     // this.props[*] gets the url param after /streams
     this.getGames(this.props["*"]);
   }
+
   componentDidUpdate(prevProps) {
     /* handling for user clicking the "Streams" navbar link
      * while browsing streams for specific game */
-    if (prevProps !== this.props) {
+    if (prevProps["*"] !== this.props["*"]) {
+      console.log("here");
       this.getGames(this.props["*"]);
     }
   }
+
   render() {
-    let state = this.state;
-    if (state.allStreams) {
+    let { loading, allStreams } = this.state;
+    //added allStreams to if statement ta handle twitch API error
+    if (allStreams && !loading) {
       return (
         <div className="streams">
-          {state.allStreams.map(stream => (
+          {allStreams.map(stream => (
             <StreamCard
               name={stream.channel.name}
               preview={stream.preview.medium}
@@ -53,13 +60,10 @@ class Streams extends Component {
           ))}
         </div>
       );
-    } else if (apiErrorCount > 50) {
-      return <p>Twitch API is having troubles right now</p>;
-    } else {
-      //Handing for twitch api server error
-      apiErrorCount++;
-      this.getGames(this.props["*"]);
+    } else if (loading) {
       return <Loading />;
+    } else {
+      return <p>Twitch API is having troubles right now</p>;
     }
   }
 }

@@ -21,12 +21,12 @@ class Games extends Component {
     }
     return (
       <div className="games">
-        {allGames.map(game => (
-          <div className="game-card" key={game.game.name}>
-            <Link to={`/streams/${game.game.name}`}>
-              <img src={game.game.box.large} alt={game.game.name} />
-              <h3 title={game.game.name}>{game.game.name}</h3>
-              <p>{kFormatter(game.viewers)} viewers</p>
+        {allGames.map(({ game: game, viewers }) => (
+          <div className="game-card" key={game.name}>
+            <Link to={`/streams/${game.name}`}>
+              <img src={game.box.large} alt={game.name} />
+              <h3 title={game.name}>{game.name}</h3>
+              <p>{kFormatter(viewers)} viewers</p>
             </Link>
           </div>
         ))}
