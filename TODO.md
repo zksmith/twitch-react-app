@@ -1,4 +1,4 @@
-### Add recently viewed channels to sidebar using localhost
+### Add recently viewed channels to sidebar using localstorage
 
 ### Add chat to channel page
 
