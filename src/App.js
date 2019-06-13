@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
+import { getFeaturedStreams } from "./components/utility/TwitchAPI";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Landing from "./components/Landing";
@@ -8,13 +9,24 @@ import Games from "./components/Games";
 import Channel from "./components/Channel";
 
 class App extends Component {
+  state = { allFeaturedStreams: [] };
+
+  async componentDidMount() {
+    const { featured } = await getFeaturedStreams();
+    console.log(featured);
+    this.setState({ allFeaturedStreams: featured });
+  }
+
   render() {
     return (
       <div className="App">
-        <Sidebar />
+        <Sidebar allFeaturedStreams={this.state.allFeaturedStreams} />
         <main className="main-wrapper">
           <Router>
-            <Landing path="/" />
+            <Landing
+              path="/"
+              allFeaturedStreams={this.state.allFeaturedStreams}
+            />
             <Streams path="streams">
               <Streams path="/:category" />
             </Streams>

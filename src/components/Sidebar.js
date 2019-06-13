@@ -15,13 +15,15 @@ const NavLink = props => (
   />
 );
 
-const Sidebar = () => {
+const Sidebar = props => {
   return (
     <nav className="sidebar">
       <h1 className="logo">
         <Link to="/">tra</Link>
       </h1>
-      <button className="btn stream-btn">● Start Stream </button>
+      <button className="btn stream-btn" title="Just for style">
+        ● Start Stream{" "}
+      </button>
       <ul className="sidebar-links">
         <li>
           <NavLink to="/" title="Home Page">
@@ -53,6 +55,33 @@ const Sidebar = () => {
           </a>
         </li>
       </ul>
+      <div className="sidebar-featured-streams">
+        <h3
+          className="sidebar-text"
+          style={{ textAlign: "center", color: "#c5c8d4" }}
+        >
+          Featured Streams
+        </h3>
+        {props.allFeaturedStreams.map(({ stream }) => (
+          <Link
+            to={`/channel/${stream.channel.display_name}`}
+            key={stream.channel.display_name}
+          >
+            <img
+              src={stream.channel.logo}
+              alt={stream.channel.display_name}
+              style={{ width: "30px", borderRadius: "50%" }}
+            />
+            <p className="sidebar-text">
+              {stream.channel.display_name}
+              <br />
+              <span style={{ color: "#c5c8d4" }} title={stream.game}>
+                {stream.game}
+              </span>
+            </p>
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 };

@@ -12,6 +12,8 @@
   position: fixed;
   left: 0;
   top: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .sidebar-links {
   list-style: none;
@@ -30,6 +32,27 @@
 .stream-btn {
   padding: 12px 19px;
   cursor: not-allowed;
+}
+.sidebar-featured-streams {
+  border-top: 1px solid #3d3d3d;
+}
+.sidebar-featured-streams a {
+  max-height: 35px;
+  display: flex;
+  margin: 10px;
+  padding: 0 5px;
+  max-width: 13vw;
+  align-items: center;
+}
+.sidebar-featured-streams img {
+  margin-right: 5px;
+}
+.sidebar-featured-streams a p {
+  margin: 0;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 979px) {

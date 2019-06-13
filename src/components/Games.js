@@ -20,7 +20,7 @@ class Games extends Component {
     }
     return (
       <div className="games">
-        {allGames.map(({ game: game, viewers }) => (
+        {allGames.map(({ game, viewers }) => (
           <div className="game-card" key={game.name}>
             <Link to={`/streams/${game.name}`}>
               <img src={game.box.large} alt={game.name} />
