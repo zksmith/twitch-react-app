@@ -1,16 +1,16 @@
 import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const ENV = runtimeEnv();
+let twitchClientId;
 
-const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${
-  ENV.REACT_APP_CLIENT_ID
-}`;
-const ALLSTREAMSURL = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${
-  ENV.REACT_APP_CLIENT_ID
-}`;
-const FEATUREDSTREAMSURL = `https://api.twitch.tv/kraken/streams/featured?client_id=${
-  ENV.REACT_APP_CLIENT_ID
-}`;
+if (process.env.NODE_ENV !== "production") {
+  twitchClientId = ENV.REACT_APP_CLIENT_ID;
+} else {
+  twitchClientId = ENV.CLIENT_ID;
+}
+
+const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${twitchClientId}`;
+const ALLSTREAMSURL = `https://api.twitch.tv/kraken/streams?limit=100&client_id=${twitchClientId}`;
+const FEATUREDSTREAMSURL = `https://api.twitch.tv/kraken/streams/featured?client_id=${twitchClientId}`;
 
 const getFeaturedStreams = async () => {
   const response = await fetch(FEATUREDSTREAMSURL);
@@ -26,9 +26,7 @@ const getGames = async () => {
 
 const getStreamsForGame = async game => {
   if (game) {
-    let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${
-      ENV.REACT_APP_CLIENT_ID
-    }`;
+    let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${twitchClientId}`;
     const response = await fetch(url);
     const result = await response.json();
     return result.streams;
