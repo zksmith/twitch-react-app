@@ -18,7 +18,9 @@ const NavLink = props => (
 const Sidebar = () => {
   return (
     <nav className="sidebar">
-      <h1 className="logo">tra</h1>
+      <h1 className="logo">
+        <Link to="/">tra</Link>
+      </h1>
       <button className="btn stream-btn">● Start Stream </button>
       <ul className="sidebar-links">
         <li>
