@@ -8,10 +8,9 @@ import "./Games.css";
 class Games extends Component {
   state = { allGames: [], loading: true };
 
-  componentDidMount() {
-    getGames().then(result => {
-      this.setState({ allGames: result, loading: false });
-    });
+  async componentDidMount() {
+    const res = await getGames();
+    this.setState({ allGames: res, loading: false });
   }
 
   render() {

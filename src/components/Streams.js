@@ -7,14 +7,13 @@ import Loading from "./Loading";
 class Streams extends Component {
   state = { allStreams: [], loading: false };
 
-  getGames = category => {
+  getGames = async category => {
     this.setState({ loading: true });
 
-    getStreamsForGame(category).then(result => {
-      this.setState({
-        allStreams: result,
-        loading: false
-      });
+    const res = await getStreamsForGame(category);
+    this.setState({
+      allStreams: res,
+      loading: false
     });
   };
 
