@@ -13,7 +13,6 @@ class App extends Component {
 
   async componentDidMount() {
     const { featured } = await getFeaturedStreams();
-    console.log(featured);
     this.setState({ allFeaturedStreams: featured });
   }
 
