@@ -1,11 +1,9 @@
-import runtimeEnv from "@mars/heroku-js-runtime-env";
-
 let twitchClientId;
 
 if (process.env.NODE_ENV !== "production") {
-  twitchClientId = ENV.REACT_APP_CLIENT_ID;
+  twitchClientId = process.env.REACT_APP_CLIENT_ID;
 } else {
-  twitchClientId = ENV.CLIENT_ID;
+  twitchClientId = process.env.CLIENT_ID;
 }
 
 const GAMESURL = `https://api.twitch.tv/kraken/games/top?limit=100&client_id=${twitchClientId}`;
