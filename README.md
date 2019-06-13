@@ -3,7 +3,7 @@
 App built to browse and watch [Twitch.tv](https://www.twitch.tv) streams.
 
 ## Live Demo
-https://twitch-react-app.herokuapp.com/
+https://twitch-react-app.netlify.com/
 
 
 ## Technologies Used
