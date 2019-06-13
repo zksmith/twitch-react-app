@@ -3,6 +3,7 @@ let twitchClientId;
 if (process.env.NODE_ENV !== "production") {
   twitchClientId = process.env.REACT_APP_CLIENT_ID;
 } else {
+  console.log(process.env);
   twitchClientId = process.env.REACT_APP_CLIENT_ID;
 }
 
