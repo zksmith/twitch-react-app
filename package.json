@@ -5,8 +5,8 @@
   "dependencies": {
     "@mars/heroku-js-runtime-env": "^3.0.2",
     "@reach/router": "^1.2.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-scripts": "^2.1.8"
   },
   "scripts": {
