@@ -7,6 +7,7 @@ import Landing from "./components/Landing";
 import Streams from "./components/Streams";
 import Games from "./components/Games";
 import Channel from "./components/Channel";
+import NotFound from "./components/NotFound";
 
 class App extends Component {
   state = { allFeaturedStreams: [] };
@@ -31,6 +32,7 @@ class App extends Component {
             </Streams>
             <Games path="games" />
             <Channel path="channel/:channelName" />
+            <NotFound default />
           </Router>
         </main>
       </div>

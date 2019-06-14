@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { getStreamsForGame } from "./utility/TwitchAPI";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
@@ -36,17 +36,24 @@ class Streams extends Component {
     if (allStreams && !loading) {
       return (
         <div className="streams">
-          {allStreams.map(stream => (
-            <StreamCard
-              name={stream.channel.name}
-              preview={stream.preview.medium}
-              game={stream.game}
-              logo={stream.channel.logo}
-              status={stream.channel.status}
-              viewers={stream.viewers}
-              key={stream.channel.name}
-            />
-          ))}
+          {/* conditional render handling successful call but no results */}
+          {allStreams.length > 0 ? (
+            <Fragment>
+              {allStreams.map(stream => (
+                <StreamCard
+                  name={stream.channel.name}
+                  preview={stream.preview.medium}
+                  game={stream.game}
+                  logo={stream.channel.logo}
+                  status={stream.channel.status}
+                  viewers={stream.viewers}
+                  key={stream.channel.name}
+                />
+              ))}
+            </Fragment>
+          ) : (
+            <h1>Could not find any streams for {this.props["*"]}</h1>
+          )}
         </div>
       );
     } else if (loading) {
