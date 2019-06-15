@@ -52,7 +52,7 @@ class Streams extends Component {
               ))}
             </Fragment>
           ) : (
-            <h1>Could not find any streams for {this.props["*"]}</h1>
+            <h1>Could not find any streams for "{this.props["*"]}"</h1>
           )}
         </div>
       );
