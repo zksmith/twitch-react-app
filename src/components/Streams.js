@@ -35,7 +35,7 @@ class Streams extends Component {
     //added allStreams to if statement ta handle twitch API error
     if (allStreams && !loading) {
       return (
-        <div className="streams">
+        <section className="streams">
           {/* conditional render handling successful call but no results */}
           {allStreams.length > 0 ? (
             <Fragment>
@@ -54,7 +54,7 @@ class Streams extends Component {
           ) : (
             <h1>Could not find any streams for "{this.props["*"]}"</h1>
           )}
-        </div>
+        </section>
       );
     } else if (loading) {
       return <Loading />;

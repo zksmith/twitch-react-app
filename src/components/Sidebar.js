@@ -55,7 +55,7 @@ const Sidebar = props => {
           </a>
         </li>
       </ul>
-      <div className="sidebar-featured-streams">
+      <aside className="sidebar-featured-streams">
         <h3
           className="sidebar-text"
           style={{ textAlign: "center", color: "#c5c8d4" }}
@@ -81,7 +81,7 @@ const Sidebar = props => {
             </p>
           </Link>
         ))}
-      </div>
+      </aside>
     </nav>
   );
 };

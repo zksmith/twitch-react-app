@@ -18,7 +18,7 @@ const Landing = ({ allFeaturedStreams }) => {
               : allFeaturedStreams[0].stream.channel.display_name
           }
         />
-        <div className="thumbnail-row">
+        <section className="thumbnail-row">
           {allFeaturedStreams
             .slice(0, 6)
             .map(({ image, stream: { channel } }) => (
@@ -34,7 +34,7 @@ const Landing = ({ allFeaturedStreams }) => {
                 />
               </button>
             ))}
-        </div>
+        </section>
       </Fragment>
     );
   }

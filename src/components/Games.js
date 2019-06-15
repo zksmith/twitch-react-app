@@ -19,7 +19,7 @@ class Games extends Component {
       return <Loading />;
     }
     return (
-      <div className="games">
+      <section className="games">
         {allGames.map(({ game, viewers }) => (
           <div className="game-card" key={game.name}>
             <Link to={`/streams/${game.name}`}>
@@ -29,7 +29,7 @@ class Games extends Component {
             </Link>
           </div>
         ))}
-      </div>
+      </section>
     );
   }
 }
