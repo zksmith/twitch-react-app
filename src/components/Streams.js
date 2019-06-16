@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { getStreamsForGame } from "./utility/TwitchAPI";
+import { useSpring, animated } from "react-spring";
 import "./Streams.css";
 import StreamCard from "./StreamCard";
 import Loading from "./Loading";
@@ -7,6 +8,10 @@ import Loading from "./Loading";
 const Streams = ({ "*": category }) => {
   const [allStreams, setAllStreams] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const animatedStyle = useSpring({
+    opacity: loading ? 0 : 1
+  });
 
   const getStreams = async category => {
     setLoading(true);
@@ -25,7 +30,7 @@ const Streams = ({ "*": category }) => {
   } else if (allStreams) {
     //added allStreams to if statement to handle twitch API error
     return (
-      <section className="streams">
+      <animated.section className="streams" style={animatedStyle}>
         {/* conditional render handling successful call but no results */}
         {allStreams.length > 0 ? (
           <Fragment>
@@ -44,7 +49,7 @@ const Streams = ({ "*": category }) => {
         ) : (
           <h1>Could not find any streams for "{category}"</h1>
         )}
-      </section>
+      </animated.section>
     );
   } else {
     return <p>Twitch API is having troubles right now</p>;

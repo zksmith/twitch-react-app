@@ -1,10 +1,16 @@
 import React, { useState, Fragment } from "react";
+import { useSpring, animated } from "react-spring";
+
 import "./Landing.css";
 import Video from "./Video.js";
 import Loading from "./Loading.js";
 
 const Landing = ({ allFeaturedStreams }) => {
   const [currentStream, setCurrentStream] = useState("");
+
+  const animatedStyle = useSpring({
+    opacity: allFeaturedStreams.length <= 0 ? 0 : 1
+  });
 
   if (allFeaturedStreams.length <= 0) {
     return <Loading />;
@@ -18,7 +24,7 @@ const Landing = ({ allFeaturedStreams }) => {
               : allFeaturedStreams[0].stream.channel.display_name
           }
         />
-        <section className="thumbnail-row">
+        <animated.section className="thumbnail-row" style={animatedStyle}>
           {allFeaturedStreams
             .slice(0, 6)
             .map(({ image, stream: { channel } }) => (
@@ -34,7 +40,7 @@ const Landing = ({ allFeaturedStreams }) => {
                 />
               </button>
             ))}
-        </section>
+        </animated.section>
       </Fragment>
     );
   }
