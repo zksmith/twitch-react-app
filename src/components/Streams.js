@@ -4,7 +4,7 @@ import "./Streams.css";
 import StreamCard from "./StreamCard";
 import Loading from "./Loading";
 
-const Streams = ({ ["*"]: category }) => {
+const Streams = ({ "*": category }) => {
   const [allStreams, setAllStreams] = useState([]);
   const [loading, setLoading] = useState(false);
 
