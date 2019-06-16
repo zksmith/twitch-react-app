@@ -24,7 +24,7 @@ const getGames = async () => {
 
 const getStreamsForGame = async game => {
   if (game) {
-    let url = `https://api.twitch.tv/kraken/search/streams?limit=100&query=${game}&client_id=${twitchClientId}`;
+    let url = `https://api.twitch.tv/kraken/streams?limit=100&game=${game}&client_id=${twitchClientId}`;
     const response = await fetch(url);
     const result = await response.json();
     return result.streams;
