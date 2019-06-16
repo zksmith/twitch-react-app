@@ -1,13 +1,12 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { getStreamsForGame } from "./utility/TwitchAPI";
 import { useSpring, animated } from "react-spring";
-import "./Streams.css";
 import StreamCard from "./StreamCard";
 import Loading from "./Loading";
 
 const Streams = ({ "*": category }) => {
   const [allStreams, setAllStreams] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const animatedStyle = useSpring({
     opacity: loading ? 0 : 1

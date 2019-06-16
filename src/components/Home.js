@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from "react";
 import { useSpring, animated } from "react-spring";
 
-import "./Landing.css";
-import Video from "./Video.js";
-import Loading from "./Loading.js";
+import "./Home.css";
+import Video from "../components/Video";
+import Loading from "../components/Loading";
 
 const Landing = ({ allFeaturedStreams }) => {
   const [currentStream, setCurrentStream] = useState("");

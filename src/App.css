@@ -38,6 +38,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 /*scrolbar styles */
 ::-webkit-scrollbar {

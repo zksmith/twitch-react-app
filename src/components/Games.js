@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "@reach/router";
 import { getGames } from "./utility/TwitchAPI";
-import { kFormatter } from "./utility/utility";
 import { useSpring, animated } from "react-spring";
 import Loading from "./Loading.js";
-import "./Games.css";
+import GameCard from "./GameCard";
 
 const Games = () => {
   const [allGames, setAllGames] = useState([]);
@@ -30,13 +28,12 @@ const Games = () => {
   return (
     <animated.section className="games" style={animatedStyle}>
       {allGames.map(({ game, viewers }) => (
-        <div className="game-card" key={game.name}>
-          <Link to={`/streams/${game.name}`}>
-            <img src={game.box.large} alt={game.name} />
-            <h3 title={game.name}>{game.name}</h3>
-            <p>{kFormatter(viewers)} viewers</p>
-          </Link>
-        </div>
+        <GameCard
+          name={game.name}
+          box={game.box.large}
+          viewers={viewers}
+          key={game.name}
+        />
       ))}
     </animated.section>
   );

@@ -5,7 +5,7 @@ import "./App.css";
 import Loading from "./components/Loading";
 
 const Sidebar = lazy(() => import("./components/Sidebar"));
-const Landing = lazy(() => import("./components/Landing"));
+const Home = lazy(() => import("./components/Home"));
 const Streams = lazy(() => import("./components/Streams"));
 const Games = lazy(() => import("./components/Games"));
 const Channel = lazy(() => import("./components/Channel"));
@@ -29,7 +29,7 @@ const App = () => {
         <Sidebar allFeaturedStreams={allFeaturedStreams} />
         <main className="main-wrapper">
           <Router>
-            <Landing path="/" allFeaturedStreams={allFeaturedStreams} />
+            <Home path="/" allFeaturedStreams={allFeaturedStreams} />
             <Streams path="streams">
               <Streams path="/:category" />
             </Streams>
