@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Router } from "@reach/router";
 import { getFeaturedStreams } from "./components/utility/TwitchAPI";
 import "./App.css";
@@ -11,37 +11,36 @@ const Games = lazy(() => import("./components/Games"));
 const Channel = lazy(() => import("./components/Channel"));
 const NotFound = lazy(() => import("./components/NotFound"));
 
-class App extends Component {
-  state = { allFeaturedStreams: [] };
+const App = () => {
+  const [allFeaturedStreams, setFeaturedStreams] = useState([]);
 
-  async componentDidMount() {
+  const fetchData = async () => {
     const { featured } = await getFeaturedStreams();
-    this.setState({ allFeaturedStreams: featured });
-  }
+    setFeaturedStreams(featured);
+  };
 
-  render() {
-    return (
-      <div className="App">
-        <Suspense fallback={<Loading />}>
-          <Sidebar allFeaturedStreams={this.state.allFeaturedStreams} />
-          <main className="main-wrapper">
-            <Router>
-              <Landing
-                path="/"
-                allFeaturedStreams={this.state.allFeaturedStreams}
-              />
-              <Streams path="streams">
-                <Streams path="/:category" />
-              </Streams>
-              <Games path="games" />
-              <Channel path="channel/:channelName" />
-              <NotFound default />
-            </Router>
-          </main>
-        </Suspense>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="App">
+      <Suspense fallback={<Loading />}>
+        <Sidebar allFeaturedStreams={allFeaturedStreams} />
+        <main className="main-wrapper">
+          <Router>
+            <Landing path="/" allFeaturedStreams={allFeaturedStreams} />
+            <Streams path="streams">
+              <Streams path="/:category" />
+            </Streams>
+            <Games path="games" />
+            <Channel path="channel/:channelName" />
+            <NotFound default />
+          </Router>
+        </main>
+      </Suspense>
+    </div>
+  );
+};
 
 export default App;
