@@ -18,6 +18,10 @@ body,
   padding: 6px;
   color: white;
 }
+.btn:hover,
+.btn:focus {
+  background-color: #9772dd;
+}
 .main-wrapper {
   position: relative;
   margin: 12px 10px;
