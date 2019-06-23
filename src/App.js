@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Router } from "@reach/router";
-import { getFeaturedStreams } from "./components/utility/TwitchAPI";
+import { getFeaturedStreams } from "./utility/TwitchAPI";
 import "./App.css";
 import Loading from "./components/Loading";
 

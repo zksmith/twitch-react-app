@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import "./StreamCard.css";
-import { kFormatter } from "./utility/utility";
+import { kFormatter } from "../utility/utility";
 import PropTypes from "prop-types";
 
 const StreamCard = ({ name, preview, game, logo, status, viewers }) => (

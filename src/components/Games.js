@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getGames } from "./utility/TwitchAPI";
+import { getGames } from "../utility/TwitchAPI";
 import { useSpring, animated } from "react-spring";
 import Loading from "./Loading.js";
 import GameCard from "./GameCard";
