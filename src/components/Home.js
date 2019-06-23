@@ -27,11 +27,12 @@ const Landing = ({ allFeaturedStreams }) => {
         <animated.section className="thumbnail-row" style={animatedStyle}>
           {allFeaturedStreams
             .slice(0, 6)
-            .map(({ image, stream: { channel } }) => (
+            .map(({ image, stream: { channel, game } }) => (
               <button
                 className="img-container"
                 onClick={event => setCurrentStream(channel.display_name)}
                 key={channel.display_name}
+                title={`${channel.display_name} playing ${game}`}
               >
                 <img
                   src={image}
