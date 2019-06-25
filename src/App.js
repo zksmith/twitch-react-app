@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { Router } from "@reach/router";
-import { getFeaturedStreams } from "./utility/TwitchAPI";
 import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
@@ -14,17 +13,6 @@ const Channel = lazy(() => import("./components/Channel"));
 const NotFound = lazy(() => import("./components/NotFound"));
 
 const App = () => {
-  const [allFeaturedStreams, setFeaturedStreams] = useState([]);
-
-  const fetchData = async () => {
-    const { featured } = await getFeaturedStreams();
-    setFeaturedStreams(featured);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <Provider store={store}>
       <div className="App">
@@ -32,7 +20,7 @@ const App = () => {
           <Sidebar />
           <main className="main-wrapper">
             <Router>
-              <Home path="/" allFeaturedStreams={allFeaturedStreams} />
+              <Home path="/" />
               <Streams path="streams">
                 <Streams path="/:category" />
               </Streams>

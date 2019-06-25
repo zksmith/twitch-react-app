@@ -8,7 +8,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_FEATURED_STREAMS:
-      console.log(action.payload);
       return {
         ...state,
         featuredStreams: action.payload

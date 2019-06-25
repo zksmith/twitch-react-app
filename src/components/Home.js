@@ -1,18 +1,19 @@
 import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
 import { useSpring, animated } from "react-spring";
 
 import "./Home.css";
 import Video from "../components/Video";
 import Loading from "../components/Loading";
 
-const Landing = ({ allFeaturedStreams }) => {
+const Landing = ({ featuredStreams }) => {
   const [currentStream, setCurrentStream] = useState("");
 
   const animatedStyle = useSpring({
-    opacity: allFeaturedStreams.length <= 0 ? 0 : 1
+    opacity: featuredStreams !== null && featuredStreams.length <= 0 ? 0 : 1
   });
 
-  if (allFeaturedStreams.length <= 0) {
+  if (featuredStreams === null) {
     return <Loading />;
   } else {
     return (
@@ -21,11 +22,11 @@ const Landing = ({ allFeaturedStreams }) => {
           currentStream={
             currentStream
               ? currentStream
-              : allFeaturedStreams[0].stream.channel.display_name
+              : featuredStreams[0].stream.channel.display_name
           }
         />
         <animated.section className="thumbnail-row" style={animatedStyle}>
-          {allFeaturedStreams
+          {featuredStreams
             .slice(0, 6)
             .map(({ image, stream: { channel, game } }) => (
               <button
@@ -46,4 +47,9 @@ const Landing = ({ allFeaturedStreams }) => {
     );
   }
 };
-export default Landing;
+
+const mapStateToProps = state => ({
+  featuredStreams: state.twitch.featuredStreams
+});
+
+export default connect(mapStateToProps)(Landing);
