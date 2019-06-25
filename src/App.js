@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Router } from "@reach/router";
 import { getFeaturedStreams } from "./utility/TwitchAPI";
+import { Provider } from "react-redux";
+import store from "./store";
 import "./App.css";
-import Loading from "./components/Loading";
 
+import Loading from "./components/Loading";
 const Sidebar = lazy(() => import("./components/Sidebar"));
 const Home = lazy(() => import("./components/Home"));
 const Streams = lazy(() => import("./components/Streams"));
@@ -24,22 +26,24 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Suspense fallback={<Loading />}>
-        <Sidebar allFeaturedStreams={allFeaturedStreams} />
-        <main className="main-wrapper">
-          <Router>
-            <Home path="/" allFeaturedStreams={allFeaturedStreams} />
-            <Streams path="streams">
-              <Streams path="/:category" />
-            </Streams>
-            <Games path="games" />
-            <Channel path="channel/:channelName" />
-            <NotFound default />
-          </Router>
-        </main>
-      </Suspense>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Suspense fallback={<Loading />}>
+          <Sidebar />
+          <main className="main-wrapper">
+            <Router>
+              <Home path="/" allFeaturedStreams={allFeaturedStreams} />
+              <Streams path="streams">
+                <Streams path="/:category" />
+              </Streams>
+              <Games path="games" />
+              <Channel path="channel/:channelName" />
+              <NotFound default />
+            </Router>
+          </main>
+        </Suspense>
+      </div>
+    </Provider>
   );
 };
 

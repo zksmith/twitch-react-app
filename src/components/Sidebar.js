@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "@reach/router";
+import { connect } from "react-redux";
+import { getFeaturedStreams } from "../actions/twitchActions";
 import "./Sidebar.css";
 
 const NavLink = props => (
@@ -15,7 +17,10 @@ const NavLink = props => (
   />
 );
 
-const Sidebar = props => {
+const Sidebar = ({ getFeaturedStreams, featuredStreams }) => {
+  useEffect(() => {
+    getFeaturedStreams();
+  }, []);
   return (
     <nav className="sidebar">
       <h1 className="logo">
@@ -62,28 +67,36 @@ const Sidebar = props => {
         >
           Featured Streams
         </h3>
-        {props.allFeaturedStreams.map(({ stream }) => (
-          <Link
-            to={`/channel/${stream.channel.display_name}`}
-            key={stream.channel.display_name}
-          >
-            <img
-              src={stream.channel.logo}
-              alt={stream.channel.display_name}
-              style={{ width: "30px", borderRadius: "50%" }}
-            />
-            <p className="sidebar-text">
-              {stream.channel.display_name}
-              <br />
-              <span style={{ color: "#c5c8d4" }} title={stream.game}>
-                {stream.game}
-              </span>
-            </p>
-          </Link>
-        ))}
+        {featuredStreams !== null &&
+          featuredStreams.map(({ stream }) => (
+            <Link
+              to={`/channel/${stream.channel.display_name}`}
+              key={stream.channel.display_name}
+            >
+              <img
+                src={stream.channel.logo}
+                alt={stream.channel.display_name}
+                style={{ width: "30px", borderRadius: "50%" }}
+              />
+              <p className="sidebar-text">
+                {stream.channel.display_name}
+                <br />
+                <span style={{ color: "#c5c8d4" }} title={stream.game}>
+                  {stream.game}
+                </span>
+              </p>
+            </Link>
+          ))}
       </aside>
     </nav>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = state => ({
+  featuredStreams: state.twitch.featuredStreams
+});
+
+export default connect(
+  mapStateToProps,
+  { getFeaturedStreams }
+)(Sidebar);
