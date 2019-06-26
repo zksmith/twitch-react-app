@@ -4,13 +4,13 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
 
-import Loading from "./components/Loading";
-import Sidebar from "./components/Sidebar";
-const Home = lazy(() => import("./components/Home"));
-const Streams = lazy(() => import("./components/Streams"));
-const Games = lazy(() => import("./components/Games"));
-const Channel = lazy(() => import("./components/Channel"));
-const NotFound = lazy(() => import("./components/NotFound"));
+import Loading from "./components/layout/Loading";
+import Sidebar from "./components/layout/Sidebar";
+const Home = lazy(() => import("./components/home/Home"));
+const Streams = lazy(() => import("./components/streams/Streams"));
+const Games = lazy(() => import("./components/games/Games"));
+const Channel = lazy(() => import("./components/channel/Channel"));
+const NotFound = lazy(() => import("./components/layout/NotFound"));
 
 const App = () => {
   return (

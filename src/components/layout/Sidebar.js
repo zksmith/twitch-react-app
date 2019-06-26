@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "@reach/router";
 import { connect } from "react-redux";
-import { getFeaturedStreams } from "../actions/twitchActions";
+import { getFeaturedStreams } from "../../actions/twitchActions";
 import "./Sidebar.css";
 
 const NavLink = props => (

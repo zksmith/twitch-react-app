@@ -1,8 +1,8 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { getStreamsForGame } from "../utility/TwitchAPI";
+import { getStreamsForGame } from "../../utility/TwitchAPI";
 import { useSpring, animated } from "react-spring";
 import StreamCard from "./StreamCard";
-import Loading from "./Loading";
+import Loading from "../layout/Loading";
 
 const Streams = ({ "*": category }) => {
   const [allStreams, setAllStreams] = useState([]);

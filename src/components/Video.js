@@ -7,6 +7,7 @@ const Video = ({ currentStream }) => (
       src={`https://player.twitch.tv/?channel=${currentStream}&muted=true`}
       title={`featured streamer ${currentStream}`}
       frameBorder="0"
+      height="500px"
     />
   </div>
 );

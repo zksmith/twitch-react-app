@@ -1,33 +1,30 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
-import { useSpring, animated } from "react-spring";
 
 import "./Home.css";
-import Video from "../components/Video";
-import Loading from "../components/Loading";
+import Video from "../Video";
+import Loading from "../layout/Loading";
 
 const Landing = ({ featuredStreams }) => {
   const [currentStream, setCurrentStream] = useState("");
-
-  const animatedStyle = useSpring({
-    opacity: featuredStreams !== null && featuredStreams.length <= 0 ? 0 : 1
-  });
 
   if (featuredStreams === null) {
     return <Loading />;
   } else {
     return (
       <Fragment>
-        <Video
-          currentStream={
-            currentStream
-              ? currentStream
-              : featuredStreams[0].stream.channel.display_name
-          }
-        />
-        <animated.section className="thumbnail-row" style={animatedStyle}>
+        <section className="selected-featured-stream">
+          <Video
+            currentStream={
+              currentStream
+                ? currentStream
+                : featuredStreams[0].stream.channel.display_name
+            }
+          />
+        </section>
+        <section className="thumbnail-row">
           {featuredStreams
-            .slice(0, 6)
+            .slice(0, 8)
             .map(({ image, stream: { channel, game } }) => (
               <button
                 className="img-container"
@@ -42,7 +39,7 @@ const Landing = ({ featuredStreams }) => {
                 />
               </button>
             ))}
-        </animated.section>
+        </section>
       </Fragment>
     );
   }

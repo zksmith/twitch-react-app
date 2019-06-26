@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { kFormatter } from "../utility/utility";
+import { kFormatter } from "../../utility/utility";
 import "./GameCard.css";
 
 function GameCard({ name, box, viewers }) {
