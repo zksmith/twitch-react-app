@@ -4,12 +4,15 @@ import "./Channel.css";
 
 const Channel = ({ channelName }) => {
   const initalState = () =>
-    JSON.parse(localStorage.getItem("chatHidden")) || false;
-  const [chatHidden, setChatVisibility] = useState(initalState);
+    localStorage.getItem("chatVisible")
+      ? JSON.parse(localStorage.getItem("chatVisible"))
+      : true;
+
+  const [chatVisible, setChatVisibile] = useState(initalState);
 
   const toggleChat = () => {
-    localStorage.setItem("chatHidden", !chatHidden);
-    setChatVisibility(!chatHidden);
+    localStorage.setItem("chatVisible", !chatVisible);
+    setChatVisibile(!chatVisible);
   };
 
   return (
@@ -26,9 +29,9 @@ const Channel = ({ channelName }) => {
           style={{ height: "7%", marginBottom: "5px", width: "100%" }}
           onClick={toggleChat}
         >
-          {chatHidden ? "Show Chat" : "Hide Chat"}
+          {chatVisible ? "Hide Chat" : "Show Chat"}
         </button>
-        {!chatHidden && (
+        {chatVisible && (
           <iframe
             frameBorder="0"
             title={`featured streamer ${channelName} chat`}
