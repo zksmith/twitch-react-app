@@ -5,7 +5,7 @@ import store from "./store";
 import "./App.css";
 
 import Loading from "./components/Loading";
-const Sidebar = lazy(() => import("./components/Sidebar"));
+import Sidebar from "./components/Sidebar";
 const Home = lazy(() => import("./components/Home"));
 const Streams = lazy(() => import("./components/Streams"));
 const Games = lazy(() => import("./components/Games"));
@@ -16,8 +16,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="App">
+        <Sidebar />
         <Suspense fallback={<Loading />}>
-          <Sidebar />
           <main className="main-wrapper">
             <Router>
               <Home path="/" />
