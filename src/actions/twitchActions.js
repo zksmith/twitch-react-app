@@ -1,21 +1,19 @@
+import axios from "axios";
 import { GET_FEATURED_STREAMS } from "./types";
 
-let twitchClientId;
+const twitchClientId = process.env.REACT_APP_CLIENT_ID;
 
-if (process.env.NODE_ENV !== "production") {
-  twitchClientId = process.env.REACT_APP_CLIENT_ID;
-} else {
-  twitchClientId = process.env.REACT_APP_CLIENT_ID;
-}
+const kraken = axios.create({
+  baseURL: "https://api.twitch.tv/kraken/",
+  headers: { "Client-ID": twitchClientId }
+});
 
+// Get all featured streams - used in sidebar and homepage
 export const getFeaturedStreams = () => async dispatch => {
-  const response = await fetch(
-    `https://api.twitch.tv/kraken/streams/featured?client_id=${twitchClientId}`
-  );
-  const result = await response.json();
+  const response = await kraken.get("streams/featured");
 
   dispatch({
     type: GET_FEATURED_STREAMS,
-    payload: result.featured
+    payload: response.data.featured
   });
 };
