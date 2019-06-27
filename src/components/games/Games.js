@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { getGames } from "../../utility/TwitchAPI";
+import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
+import { getTopGames } from "../../actions/twitchActions";
+import { connect } from "react-redux";
 import Loading from "../layout/Loading.js";
 import GameCard from "./GameCard";
 
-const Games = () => {
-  const [allGames, setAllGames] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const Games = ({ getTopGames, topGames, loading }) => {
   const animatedStyle = useSpring({
     opacity: loading ? 0 : 1
   });
 
-  const fetchGames = async () => {
-    const res = await getGames();
-    setAllGames(res);
-    setLoading(false);
-  };
-
   useEffect(() => {
-    fetchGames();
+    getTopGames();
   }, []);
 
-  if (loading) {
+  if (topGames === null || loading) {
     return <Loading />;
   }
   return (
     <animated.section className="games" style={animatedStyle}>
-      {allGames.map(({ game, viewers }) => (
+      {topGames.map(({ game, viewers }) => (
         <GameCard
           name={game.name}
           box={game.box.large}
@@ -39,4 +31,12 @@ const Games = () => {
   );
 };
 
-export default Games;
+const mapStateToProps = state => ({
+  topGames: state.twitch.topGames,
+  loading: state.twitch.loading
+});
+
+export default connect(
+  mapStateToProps,
+  { getTopGames }
+)(Games);
