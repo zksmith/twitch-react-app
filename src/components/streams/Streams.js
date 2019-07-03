@@ -19,7 +19,10 @@ const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
   } else if (streams) {
     //added streams to if statement to handle twitch API error
     return (
-      <animated.section className="streams" style={animatedStyle}>
+      <animated.section
+        className="flex-container streams"
+        style={animatedStyle}
+      >
         {/* conditional render handling successful call but no results */}
         {streams.length > 0 ? (
           <Fragment>

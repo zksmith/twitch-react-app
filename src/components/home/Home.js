@@ -13,7 +13,7 @@ const Landing = ({ featuredStreams }) => {
   }
   return (
     <Fragment>
-      <section className="selected-featured-stream">
+      <section className="flex-container selected-featured-stream">
         <Video
           currentStream={
             currentStream

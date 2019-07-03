@@ -42,7 +42,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
-section {
+.flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
