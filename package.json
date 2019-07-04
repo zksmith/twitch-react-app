@@ -13,13 +13,16 @@
     "react-spring": "^8.0.25",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "npm run build && netlify deploy --prod",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
