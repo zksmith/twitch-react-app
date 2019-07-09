@@ -48,9 +48,9 @@ const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
   }
 };
 
-const mapStateToProps = state => ({
-  streams: state.twitch.streams,
-  loading: state.twitch.loading
+const mapStateToProps = ({ twitch: { streams, loading } }) => ({
+  streams: streams,
+  loading: loading
 });
 
 export default connect(

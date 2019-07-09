@@ -31,9 +31,9 @@ const Games = ({ getTopGames, topGames, loading }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  topGames: state.twitch.topGames,
-  loading: state.twitch.loading
+const mapStateToProps = ({ twitch: { topGames, loading } }) => ({
+  topGames: topGames,
+  loading: loading
 });
 
 export default connect(
