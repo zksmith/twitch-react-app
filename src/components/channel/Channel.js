@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { getChannelInfo } from "../../actions/twitchActions";
 // import Video from "./Video";
 import "./Channel.css";
 
-const Channel = ({ channelName }) => {
+const Channel = ({ channelName, getChannelInfo }) => {
   const initalState = () =>
     localStorage.getItem("chatVisible")
       ? JSON.parse(localStorage.getItem("chatVisible"))
@@ -14,6 +16,10 @@ const Channel = ({ channelName }) => {
     localStorage.setItem("chatVisible", !chatVisible);
     setChatVisibile(!chatVisible);
   };
+
+  useEffect(() => {
+    getChannelInfo(channelName);
+  }, [channelName, getChannelInfo]);
 
   return (
     <div style={{ display: "flex", height: "90vh" }}>
@@ -46,4 +52,7 @@ const Channel = ({ channelName }) => {
     </div>
   );
 };
-export default Channel;
+export default connect(
+  null,
+  { getChannelInfo }
+)(Channel);

@@ -55,6 +55,11 @@ export const getStreamsByCategory = category => async dispatch => {
   }
 };
 
+export const getChannelInfo = channelName => async dispatch => {
+  const response = await kraken.get(`channels/${channelName}`);
+  console.log(response.data);
+};
+
 export const setLoading = () => {
   return {
     type: SET_LOADING
