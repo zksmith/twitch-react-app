@@ -1,0 +1,37 @@
+.channel-container {
+  display: flex;
+  height: 90vh;
+}
+.channel-container .video-frame {
+  flex-basis: 70%;
+}
+.channel-container .chat-container {
+  flex-basis: 30%;
+}
+.chat-container button {
+  height: 7%;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.chat-container iframe {
+  height: 92%;
+  width: 100%;
+}
+
+@media (max-width: 979px) {
+  .channel-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+  .channel-container .video-frame {
+    flex-basis: 40%;
+  }
+  .channel-container .chat-container {
+    flex-basis: 55%;
+  }
+  .chat-container button {
+    height: 10%;
+    margin: 5px 0;
+    width: 100%;
+  }
+}
