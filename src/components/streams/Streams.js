@@ -12,7 +12,7 @@ const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
 
   useEffect(() => {
     getStreamsByCategory(category);
-  }, [category]);
+  }, [category, getStreamsByCategory]);
 
   if (streams === null || loading) {
     return <Loading />;

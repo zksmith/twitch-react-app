@@ -12,7 +12,7 @@ const Games = ({ getTopGames, topGames, loading }) => {
 
   useEffect(() => {
     getTopGames();
-  }, []);
+  }, [getTopGames]);
 
   if (topGames === null || loading) {
     return <Loading />;

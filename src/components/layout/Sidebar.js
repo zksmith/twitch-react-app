@@ -20,7 +20,7 @@ const NavLink = props => (
 const Sidebar = ({ getFeaturedStreams, featuredStreams }) => {
   useEffect(() => {
     getFeaturedStreams();
-  }, []);
+  }, [getFeaturedStreams]);
   return (
     <aside className="sidebar">
       <nav>
