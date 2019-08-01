@@ -3,7 +3,8 @@ import {
   GET_FEATURED_STREAMS,
   GET_TOP_GAMES,
   GET_STREAMS_BY_CATEGORY,
-  SET_LOADING
+  SET_LOADING,
+  SET_VIEWED_CHANNEL
 } from "./types";
 
 const twitchClientId = process.env.REACT_APP_CLIENT_ID;
@@ -57,6 +58,10 @@ export const getStreamsByCategory = category => async dispatch => {
 
 export const getChannelInfo = channelName => async dispatch => {
   const response = await kraken.get(`channels/${channelName}`);
+  dispatch({
+    type: SET_VIEWED_CHANNEL,
+    payload: response.data
+  });
   console.log(response.data);
 };
 

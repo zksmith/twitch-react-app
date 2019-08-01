@@ -1,6 +1,7 @@
 .game-card {
   width: 12rem;
   max-width: 50%;
+  margin: 10px 0;
 }
 .game-card img {
   width: 100%;
@@ -13,5 +14,5 @@
   margin-top: 0.2rem;
 }
 .game-card p {
-  margin: 0.3rem 0 1.5rem 0;
+  margin: 0.3rem 0 0 0;
 }
