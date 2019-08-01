@@ -35,16 +35,16 @@ const Channel = ({ channelName, getChannelInfo, channelInfo }) => {
                   <span>{channelInfo.name}</span>
                 </div>
                 <div className="header-block">
-                  <span>
-                    <a href="#!">Followers:</a>{" "}
-                    {channelInfo.followers.toLocaleString()}
-                  </span>
-                </div>
-                <div className="header-block">
                   <a href="#!">Clips</a>
                 </div>
                 <div className="header-block">
                   <a href="#!">Videos</a>
+                </div>
+                <div className="header-block">
+                  <span>
+                    <a href="#!">Followers:</a>{" "}
+                    {channelInfo.followers.toLocaleString()}
+                  </span>
                 </div>
               </header>
               <iframe
