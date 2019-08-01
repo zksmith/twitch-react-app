@@ -31,6 +31,7 @@ const Channel = ({ channelName, getChannelInfo, channelInfo }) => {
                   <img
                     src={channelInfo.logo}
                     style={{ width: "30px", borderRadius: "50%" }}
+                    alt={`${channelInfo.name} logo`}
                   />
                   <span>{channelInfo.name}</span>
                 </div>
