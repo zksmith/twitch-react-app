@@ -1,7 +1,12 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 
-import "./Home.css";
+import {
+  HomeVideoContainer,
+  ThumbnailContainer,
+  ThumbnailButton,
+  ThumbnailButtonImage
+} from "./HomeStyles";
 import Video from "../Video";
 import Loading from "../layout/Loading";
 
@@ -13,7 +18,7 @@ const Landing = ({ featuredStreams }) => {
   }
   return (
     <Fragment>
-      <section className="flex-container selected-featured-stream">
+      <HomeVideoContainer>
         <Video
           currentStream={
             currentStream
@@ -21,25 +26,24 @@ const Landing = ({ featuredStreams }) => {
               : featuredStreams[0].stream.channel.display_name
           }
         />
-      </section>
-      <section className="thumbnail-row">
+      </HomeVideoContainer>
+      <ThumbnailContainer>
         {featuredStreams
           .slice(0, 8)
           .map(({ image, stream: { channel, game } }) => (
-            <button
-              className="img-container"
+            <ThumbnailButton
               onClick={event => setCurrentStream(channel.display_name)}
               key={channel.display_name}
               title={`${channel.display_name} playing ${game}`}
             >
-              <img
+              <ThumbnailButtonImage
                 src={image}
                 alt={channel.display_name}
                 key={channel.display_name}
               />
-            </button>
+            </ThumbnailButton>
           ))}
-      </section>
+      </ThumbnailContainer>
     </Fragment>
   );
 };
