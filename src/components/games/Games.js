@@ -18,7 +18,7 @@ const Games = ({ getTopGames, topGames, loading }) => {
     return <Loading />;
   }
   return (
-    <animated.section className="flex-container games" style={animatedStyle}>
+    <animated.section className="flex-container" style={animatedStyle}>
       {topGames.map(({ game, viewers }) => (
         <GameCard
           name={game.name}
