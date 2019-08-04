@@ -17,7 +17,7 @@ const App = () => {
     <Provider store={store}>
       <div className="App">
         <Sidebar />
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<></>}>
           <main className="main-wrapper">
             <Router>
               <Home path="/" />
