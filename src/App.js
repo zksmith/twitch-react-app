@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
 
-import Loading from "./components/layout/Loading";
 import Sidebar from "./components/layout/Sidebar";
 const Home = lazy(() => import("./components/home/Home"));
 const Streams = lazy(() => import("./components/streams/Streams"));
