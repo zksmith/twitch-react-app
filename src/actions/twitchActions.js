@@ -62,7 +62,6 @@ export const getChannelInfo = channelName => async dispatch => {
     type: SET_VIEWED_CHANNEL,
     payload: response.data
   });
-  console.log(response.data);
 };
 
 export const setLoading = () => {
