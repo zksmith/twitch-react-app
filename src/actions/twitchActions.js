@@ -32,7 +32,6 @@ export const getTopGames = () => async dispatch => {
   try {
     dispatch(setLoading());
     const response = await helix.get("games/top?first=100");
-    console.log(response);
     dispatch({
       type: GET_TOP_GAMES,
       payload: response.data.data
