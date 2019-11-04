@@ -31,10 +31,11 @@ export const getFeaturedStreams = () => async dispatch => {
 export const getTopGames = () => async dispatch => {
   try {
     dispatch(setLoading());
-    const response = await helix.get("games/top?limit=100");
+    const response = await helix.get("games/top?first=100");
+    console.log(response);
     dispatch({
       type: GET_TOP_GAMES,
-      payload: response.data.top
+      payload: response.data.data
     });
   } catch (error) {
     console.log(error);
@@ -47,7 +48,6 @@ export const getStreams = gameID => async dispatch => {
     const response = await helix.get(
       gameID ? `streams?first=100&game_id=${gameID}` : `streams?first=100`
     );
-    console.log(response)
     dispatch({
       type: GET_STREAMS,
       payload: response.data.data

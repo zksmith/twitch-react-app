@@ -3,13 +3,12 @@ import { Link } from "@reach/router";
 import { kFormatter } from "../../utility/utility";
 import { GameCardContainer } from "./GameCardStyles";
 
-const GameCard = ({ name, box, viewers }) => {
+const GameCard = ({ name, box, id }) => {
   return (
     <GameCardContainer key={name}>
-      <Link to={`/streams/${name}`}>
-        <img src={box} alt={name} />
+      <Link to={`/streams/${id}`}>
+        <img src={box.replace("{width}", "272").replace("{height}", "380")} alt={name} />
         <h3 title={name}>{name}</h3>
-        <p>{kFormatter(viewers)} viewers</p>
       </Link>
     </GameCardContainer>
   );
