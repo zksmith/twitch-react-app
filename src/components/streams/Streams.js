@@ -28,13 +28,12 @@ const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
           <Fragment>
             {streams.map(stream => (
               <StreamCard
-                name={stream.channel.name}
-                preview={stream.preview.medium}
-                game={stream.game}
-                logo={stream.channel.logo}
-                status={stream.channel.status}
-                viewers={stream.viewers}
-                key={stream.channel.name}
+                name={stream.user_name}
+                preview={stream.thumbnail_url}
+                game={stream.game_id}
+                status={stream.title}
+                viewers={stream.viewer_count}
+                key={stream.id}
               />
             ))}
           </Fragment>

@@ -9,15 +9,15 @@ import {
 
 const twitchClientId = process.env.REACT_APP_CLIENT_ID;
 
-const kraken = axios.create({
-  baseURL: "https://api.twitch.tv/kraken/",
+const helix = axios.create({
+  baseURL: "https://api.twitch.tv/helix/",
   headers: { "Client-ID": twitchClientId }
 });
 
 // Get all featured streams - used in sidebar and homepage
 export const getFeaturedStreams = () => async dispatch => {
   try {
-    const response = await kraken.get("streams/featured");
+    const response = await helix.get("streams/featured");
 
     dispatch({
       type: GET_FEATURED_STREAMS,
@@ -31,7 +31,7 @@ export const getFeaturedStreams = () => async dispatch => {
 export const getTopGames = () => async dispatch => {
   try {
     dispatch(setLoading());
-    const response = await kraken.get("games/top?limit=100");
+    const response = await helix.get("games/top?limit=100");
     dispatch({
       type: GET_TOP_GAMES,
       payload: response.data.top
@@ -44,12 +44,13 @@ export const getTopGames = () => async dispatch => {
 export const getStreamsByCategory = category => async dispatch => {
   try {
     dispatch(setLoading());
-    const response = await kraken.get(
-      category ? `streams?limit=100&game=${category}` : `streams?limit=100`
+    const response = await helix.get(
+      category ? `streams?first=100&game=${category}` : `streams?first=100`
     );
+    console.log(response)
     dispatch({
       type: GET_STREAMS_BY_CATEGORY,
-      payload: response.data.streams
+      payload: response.data.data
     });
   } catch (error) {
     console.log(error);
@@ -57,7 +58,7 @@ export const getStreamsByCategory = category => async dispatch => {
 };
 
 export const getChannelInfo = channelName => async dispatch => {
-  const response = await kraken.get(`channels/${channelName}`);
+  const response = await helix.get(`channels/${channelName}`);
   dispatch({
     type: SET_VIEWED_CHANNEL,
     payload: response.data
