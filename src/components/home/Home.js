@@ -23,23 +23,23 @@ const Landing = ({ featuredStreams }) => {
           currentStream={
             currentStream
               ? currentStream
-              : featuredStreams[0].stream.channel.display_name
+              : featuredStreams[0].user_name
           }
         />
       </HomeVideoContainer>
       <ThumbnailContainer>
         {featuredStreams
           .slice(0, 8)
-          .map(({ image, stream: { channel, game } }) => (
+          .map(({ thumbnail_url, id, title, user_name }) => (
             <ThumbnailButton
-              onClick={event => setCurrentStream(channel.display_name)}
-              key={channel.display_name}
-              title={`${channel.display_name} playing ${game}`}
+              onClick={event => setCurrentStream(user_name)}
+              key={id}
+              title={title}
             >
               <ThumbnailButtonImage
-                src={image}
-                alt={channel.display_name}
-                key={channel.display_name}
+                src={thumbnail_url.replace("{width}", "320").replace("{height}", "180")}
+                alt={user_name}
+                key={id}
               />
             </ThumbnailButton>
           ))}

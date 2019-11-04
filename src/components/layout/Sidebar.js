@@ -62,7 +62,7 @@ const Sidebar = ({ getFeaturedStreams, featuredStreams }) => {
           </li>
         </ul>
       </nav>
-      <section className="sidebar-featured-streams">
+      {/* <section className="sidebar-featured-streams">
         <h3
           className="sidebar-text"
           style={{ textAlign: "center", color: "#c5c8d4" }}
@@ -89,7 +89,7 @@ const Sidebar = ({ getFeaturedStreams, featuredStreams }) => {
               </p>
             </Link>
           ))}
-      </section>
+      </section> */}
     </aside>
   );
 };

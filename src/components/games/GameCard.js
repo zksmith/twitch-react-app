@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { kFormatter } from "../../utility/utility";
 import { GameCardContainer } from "./GameCardStyles";
 
 const GameCard = ({ name, box, id }) => {

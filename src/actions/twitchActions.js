@@ -17,11 +17,10 @@ const helix = axios.create({
 // Get all featured streams - used in sidebar and homepage
 export const getFeaturedStreams = () => async dispatch => {
   try {
-    const response = await helix.get("streams/featured");
-
+    const response = await helix.get("streams");
     dispatch({
       type: GET_FEATURED_STREAMS,
-      payload: response.data.featured
+      payload: response.data.data
     });
   } catch (error) {
     console.log(error);
