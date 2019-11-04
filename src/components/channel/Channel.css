@@ -2,23 +2,18 @@
   display: flex;
   height: 90vh;
 }
-.info-stream {
+.video-frame {
   flex-basis: 70%;
 }
-.info-stream iframe {
-  width: 100%;
-  height: 100%;
-}
-.channel-container .chat-container {
+.chat-container {
   flex-basis: 30%;
 }
 .chat-container button {
   height: 50px;
-  margin-bottom: 10px;
   width: 100%;
 }
 .chat-container iframe {
-  height: 100%;
+  height: calc(100% - 50px);
   width: 100%;
 }
 
@@ -50,14 +45,11 @@
     flex-direction: column;
     height: 100vh;
   }
-  .info-stream {
-    flex-basis: 35%;
-  }
-  .info-stream .video-frame {
-    height: 70%;
+  .video-frame {
+    flex-basis: 30%;
   }
   .chat-container {
-    height: 100%;
+    flex-basis: 70%;
   }
   .chat-container button {
     margin: 5px 0;
