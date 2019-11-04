@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   GET_FEATURED_STREAMS,
   GET_TOP_GAMES,
-  GET_STREAMS_BY_CATEGORY,
+  GET_STREAMS,
   SET_LOADING,
   SET_VIEWED_CHANNEL
 } from "./types";
@@ -41,15 +41,15 @@ export const getTopGames = () => async dispatch => {
   }
 };
 
-export const getStreamsByCategory = category => async dispatch => {
+export const getStreams = gameID => async dispatch => {
   try {
     dispatch(setLoading());
     const response = await helix.get(
-      category ? `streams?first=100&game=${category}` : `streams?first=100`
+      gameID ? `streams?first=100&game_id=${gameID}` : `streams?first=100`
     );
     console.log(response)
     dispatch({
-      type: GET_STREAMS_BY_CATEGORY,
+      type: GET_STREAMS,
       payload: response.data.data
     });
   } catch (error) {

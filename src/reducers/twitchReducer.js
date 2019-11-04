@@ -1,7 +1,7 @@
 import {
   GET_FEATURED_STREAMS,
   GET_TOP_GAMES,
-  GET_STREAMS_BY_CATEGORY,
+  GET_STREAMS,
   SET_LOADING,
   SET_VIEWED_CHANNEL
 } from "../actions/types";
@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         topGames: action.payload,
         loading: false
       };
-    case GET_STREAMS_BY_CATEGORY:
+    case GET_STREAMS:
       return {
         ...state,
         streams: action.payload,

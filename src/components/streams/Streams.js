@@ -1,18 +1,18 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
-import { getStreamsByCategory } from "../../actions/twitchActions";
+import { getStreams } from "../../actions/twitchActions";
 import { useSpring, animated } from "react-spring";
 import StreamCard from "./StreamCard";
 import Loading from "../layout/Loading";
 
-const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
+const Streams = ({ "*": gameID, getStreams, streams, loading }) => {
   const animatedStyle = useSpring({
     opacity: loading ? 0 : 1
   });
 
   useEffect(() => {
-    getStreamsByCategory(category);
-  }, [category, getStreamsByCategory]);
+    getStreams(gameID);
+  }, [gameID, getStreams]);
 
   if (streams === null || loading) {
     return <Loading />;
@@ -38,7 +38,7 @@ const Streams = ({ "*": category, getStreamsByCategory, streams, loading }) => {
             ))}
           </Fragment>
         ) : (
-          <h1>Could not find any streams for "{category}"</h1>
+          <h1>Could not find any streams for "{gameID}"</h1>
         )}
       </animated.section>
     );
@@ -54,5 +54,5 @@ const mapStateToProps = ({ twitch: { streams, loading } }) => ({
 
 export default connect(
   mapStateToProps,
-  { getStreamsByCategory }
+  { getStreams }
 )(Streams);
