@@ -4,7 +4,8 @@ import {
   GET_TOP_GAMES,
   GET_STREAMS,
   SET_LOADING,
-  SET_VIEWED_CHANNEL
+  SET_VIEWED_CHANNEL,
+  GET_GAME_INFO
 } from "./types";
 
 const twitchClientId = process.env.REACT_APP_CLIENT_ID;
@@ -54,6 +55,18 @@ export const getStreams = gameID => async dispatch => {
     console.log(error);
   }
 };
+
+export const getGameInfo = gameID => async dispatch => {
+  try {
+    const response = await helix.get(`games?id=${gameID}`);
+    dispatch({
+      type: GET_GAME_INFO,
+      payload: response.data.data[0]
+    })
+  } catch(error) {
+    console.log(error);
+  }
+}
 
 export const getChannelInfo = channelName => async dispatch => {
   const response = await helix.get(`channels/${channelName}`);
