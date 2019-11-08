@@ -7,7 +7,8 @@ import PropTypes from "prop-types";
 const StreamCard = ({ name, preview, game, status, viewers }) => (
   <div className="stream-card">
     <Link to={`/channel/${name}`}>
-      <img src={preview.replace("{width}", "320").replace("{height}", "180")} alt={`${name} playing ${game}`} />
+      <img src={preview.replace("{width}", "320").replace("{height}", "180")} 
+        alt={`${name} playing ${game}`} />
     </Link>
     <div className="streamcard-block">
       <div className="streamcard-text">
