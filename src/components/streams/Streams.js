@@ -22,7 +22,7 @@ const Streams = ({ "*": gameID, getStreams, getGameInfo, gameInfo, streams, load
     //added streams to if statement to handle twitch API error
     return (
       <>
-      <StreamsHeader gameInfo={gameInfo}/>
+      <StreamsHeader gameInfo={gameInfo[gameID]}/>
       <animated.section
         className="flex-container streams"
         style={animatedStyle}

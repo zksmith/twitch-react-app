@@ -61,7 +61,9 @@ export const getGameInfo = gameID => async dispatch => {
     const response = await helix.get(`games?id=${gameID}`);
     dispatch({
       type: GET_GAME_INFO,
-      payload: response.data.data[0]
+      payload: {
+                 [gameID]: response.data.data[0]
+              }
     })
   } catch(error) {
     console.log(error);

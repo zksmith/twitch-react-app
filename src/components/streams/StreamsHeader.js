@@ -2,6 +2,7 @@ import React from 'react';
 import './StreamsHeader.css';
 
 const StreamsHeader = ({gameInfo}) => {
+    console.log(gameInfo)
     if(gameInfo) {
         return (
             <header className="streams-header">

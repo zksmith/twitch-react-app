@@ -11,7 +11,7 @@ const initialState = {
   featuredStreams: null,
   topGames: null,
   streams: null,
-  gameInfo: null,
+  gameInfo: {},
   viewedChannel: null,
   loading: false
 };
@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
     case GET_GAME_INFO:
       return {
         ...state,
-        gameInfo: action.payload
+        gameInfo: {...state.gameInfo, ...action.payload}
       }
     case SET_VIEWED_CHANNEL:
       return {
