@@ -20,12 +20,7 @@ const Games = ({ getTopGames, topGames, loading }) => {
   return (
     <animated.section className="flex-container" style={animatedStyle}>
       {topGames.map(({ name, box_art_url, id }) => (
-        <GameCard
-          name={name}
-          box={box_art_url}
-          id={id}
-          key={id}
-        />
+        <GameCard name={name} box={box_art_url} id={id} key={id} />
       ))}
     </animated.section>
   );
@@ -36,7 +31,4 @@ const mapStateToProps = ({ twitch: { topGames, loading } }) => ({
   loading: loading
 });
 
-export default connect(
-  mapStateToProps,
-  { getTopGames }
-)(Games);
+export default connect(mapStateToProps, { getTopGames })(Games);

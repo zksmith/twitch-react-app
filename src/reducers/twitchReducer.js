@@ -38,8 +38,8 @@ export default (state = initialState, action) => {
     case GET_GAME_INFO:
       return {
         ...state,
-        gameInfo: {...state.gameInfo, ...action.payload}
-      }
+        gameInfo: { ...state.gameInfo, ...action.payload }
+      };
     case SET_VIEWED_CHANNEL:
       return {
         ...state,

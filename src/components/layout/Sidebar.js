@@ -98,7 +98,4 @@ const mapStateToProps = state => ({
   featuredStreams: state.twitch.featuredStreams
 });
 
-export default connect(
-  mapStateToProps,
-  { getFeaturedStreams }
-)(Sidebar);
+export default connect(mapStateToProps, { getFeaturedStreams })(Sidebar);

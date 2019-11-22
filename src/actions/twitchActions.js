@@ -62,13 +62,13 @@ export const getGameInfo = gameID => async dispatch => {
     dispatch({
       type: GET_GAME_INFO,
       payload: {
-                 [gameID]: response.data.data[0]
-              }
-    })
-  } catch(error) {
+        [gameID]: response.data.data[0]
+      }
+    });
+  } catch (error) {
     console.log(error);
   }
-}
+};
 
 export const getChannelInfo = channelName => async dispatch => {
   const response = await helix.get(`channels/${channelName}`);

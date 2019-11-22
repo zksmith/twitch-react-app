@@ -21,9 +21,7 @@ const Landing = ({ featuredStreams }) => {
       <HomeVideoContainer>
         <Video
           currentStream={
-            currentStream
-              ? currentStream
-              : featuredStreams[0].user_name
+            currentStream ? currentStream : featuredStreams[0].user_name
           }
         />
       </HomeVideoContainer>
@@ -37,7 +35,9 @@ const Landing = ({ featuredStreams }) => {
               title={title}
             >
               <ThumbnailButtonImage
-                src={thumbnail_url.replace("{width}", "320").replace("{height}", "180")}
+                src={thumbnail_url
+                  .replace("{width}", "320")
+                  .replace("{height}", "180")}
                 alt={user_name}
                 key={id}
               />
