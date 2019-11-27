@@ -4,7 +4,8 @@ import {
   GET_STREAMS,
   SET_LOADING,
   SET_VIEWED_CHANNEL,
-  GET_GAME_INFO
+  GET_GAME_INFO,
+  SET_API_ERROR
 } from "../actions/types";
 
 const initialState = {
@@ -13,11 +14,17 @@ const initialState = {
   streams: null,
   gameInfo: {},
   viewedChannel: null,
-  loading: false
+  loading: false,
+  isAPIError: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_API_ERROR:
+      return {
+        ...state,
+        isAPIError: action.payload
+      };
     case GET_FEATURED_STREAMS:
       return {
         ...state,

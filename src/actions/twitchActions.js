@@ -5,7 +5,8 @@ import {
   GET_STREAMS,
   SET_LOADING,
   SET_VIEWED_CHANNEL,
-  GET_GAME_INFO
+  GET_GAME_INFO,
+  SET_API_ERROR
 } from "./types";
 
 const twitchClientId = process.env.REACT_APP_CLIENT_ID;
@@ -14,6 +15,13 @@ const helix = axios.create({
   baseURL: "https://api.twitch.tv/helix/",
   headers: { "Client-ID": twitchClientId }
 });
+
+export const setAPIError = bool => {
+  return {
+    type: SET_API_ERROR,
+    payload: bool
+  };
+};
 
 // Get all featured streams - used in sidebar and homepage
 export const getFeaturedStreams = () => async dispatch => {
@@ -24,7 +32,7 @@ export const getFeaturedStreams = () => async dispatch => {
       payload: response.data.data
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAPIError(true));
   }
 };
 
@@ -37,7 +45,7 @@ export const getTopGames = () => async dispatch => {
       payload: response.data.data
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAPIError(true));
   }
 };
 
@@ -52,7 +60,7 @@ export const getStreams = gameID => async dispatch => {
       payload: response.data.data
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAPIError(true));
   }
 };
 
@@ -66,7 +74,7 @@ export const getGameInfo = gameID => async dispatch => {
       }
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAPIError(true));
   }
 };
 

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Loading from "../layout/Loading.js";
 import GameCard from "./GameCard";
 
-const Games = ({ getTopGames, topGames, loading }) => {
+const Games = ({ getTopGames, topGames, loading, isAPIError }) => {
   const animatedStyle = useSpring({
     opacity: loading ? 0 : 1
   });
@@ -14,7 +14,9 @@ const Games = ({ getTopGames, topGames, loading }) => {
     getTopGames();
   }, [getTopGames]);
 
-  if (topGames === null || loading) {
+  if (isAPIError) {
+    return <h2>Error loading data from the Twitch API</h2>;
+  } else if (topGames === null || loading) {
     return <Loading />;
   }
   return (
@@ -26,9 +28,10 @@ const Games = ({ getTopGames, topGames, loading }) => {
   );
 };
 
-const mapStateToProps = ({ twitch: { topGames, loading } }) => ({
+const mapStateToProps = ({ twitch: { topGames, loading, isAPIError } }) => ({
   topGames: topGames,
-  loading: loading
+  loading: loading,
+  isAPIError: isAPIError
 });
 
 export default connect(mapStateToProps, { getTopGames })(Games);

@@ -5,3 +5,4 @@ export const GET_STREAMS = "GET_STREAMS_FOR_CATEGORY";
 export const SET_VIEWED_CHANNEL = "SET_VIEWED_CHANNEL";
 export const SET_LOADING = "SET_LOADING";
 export const GET_GAME_INFO = "GET_GAME_INFO";
+export const SET_API_ERROR = "SET_API_ERROR";
