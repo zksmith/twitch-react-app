@@ -27,7 +27,7 @@ const Landing = ({ featuredStreams }) => {
       </HomeVideoContainer>
       <ThumbnailContainer>
         {featuredStreams
-          .slice(0, 8)
+          .slice(0, 9)
           .filter(({ user_name }) => {
             return (
               user_name !==
