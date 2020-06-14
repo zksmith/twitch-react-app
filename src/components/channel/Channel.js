@@ -17,7 +17,7 @@ const Channel = ({ channelName, getChannelInfo, channelInfo }) => {
     <div className="channel-container">
       <iframe
         className="video-frame"
-        src={`https://player.twitch.tv/?channel=${channelName}&muted=true`}
+        src={`https://player.twitch.tv/?channel=${channelName}&muted=false&parent=twitch-react-app.netlify.app`}
         title={`featured streamer ${channelName}`}
         frameBorder="0"
         allowFullScreen

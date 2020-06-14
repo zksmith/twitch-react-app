@@ -5,7 +5,7 @@ import {
   HomeVideoContainer,
   ThumbnailContainer,
   ThumbnailButton,
-  ThumbnailButtonImage
+  ThumbnailButtonImage,
 } from "./HomeStyles";
 import Video from "../Video";
 import Loading from "../layout/Loading";
@@ -28,9 +28,15 @@ const Landing = ({ featuredStreams }) => {
       <ThumbnailContainer>
         {featuredStreams
           .slice(0, 8)
+          .filter(({ user_name }) => {
+            return (
+              user_name !==
+              (currentStream ? currentStream : featuredStreams[0].user_name)
+            );
+          })
           .map(({ thumbnail_url, id, title, user_name }) => (
             <ThumbnailButton
-              onClick={event => setCurrentStream(user_name)}
+              onClick={() => setCurrentStream(user_name)}
               key={id}
               title={title}
             >
@@ -48,8 +54,8 @@ const Landing = ({ featuredStreams }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  featuredStreams: state.twitch.featuredStreams
+const mapStateToProps = (state) => ({
+  featuredStreams: state.twitch.featuredStreams,
 });
 
 export default connect(mapStateToProps)(Landing);
