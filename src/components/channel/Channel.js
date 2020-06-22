@@ -26,15 +26,14 @@ const Channel = ({ channelName, getChannelInfo, channelInfo }) => {
         <button className="btn" onClick={toggleChat}>
           {chatVisible ? "Hide Chat" : "Show Chat"}
         </button>
-        {chatVisible && (
-          <iframe
-            frameBorder="0"
-            title={`featured streamer ${channelName} chat`}
-            scrolling="no"
-            id="chat_embed"
-            src={`https://www.twitch.tv/embed/${channelName}/chat`}
-          />
-        )}
+        <iframe
+          frameBorder="0"
+          title={`featured streamer ${channelName} chat`}
+          scrolling="no"
+          id="chat_embed"
+          src={`https://www.twitch.tv/embed/${channelName}/chat?parent=twitch-react-app.netlify.app&darkpopout`}
+          className={chatVisible ? "shown" : "hidden"}
+        />
       </div>
     </div>
   );
