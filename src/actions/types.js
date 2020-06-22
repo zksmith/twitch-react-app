@@ -6,3 +6,4 @@ export const SET_VIEWED_CHANNEL = "SET_VIEWED_CHANNEL";
 export const SET_LOADING = "SET_LOADING";
 export const GET_GAME_INFO = "GET_GAME_INFO";
 export const SET_API_ERROR = "SET_API_ERROR";
+export const FILTER_GAMES = "FILTER_GAMES";

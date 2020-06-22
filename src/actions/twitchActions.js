@@ -7,6 +7,7 @@ import {
   SET_VIEWED_CHANNEL,
   GET_GAME_INFO,
   SET_API_ERROR,
+  FILTER_GAMES,
 } from "./types";
 
 const twitchClientId = process.env.REACT_APP_CLIENT_ID;
@@ -51,6 +52,13 @@ export const getTopGames = () => async (dispatch) => {
   } catch (error) {
     dispatch(setAPIError(true));
   }
+};
+
+export const filterGames = (text) => {
+  return {
+    type: FILTER_GAMES,
+    payload: text.toLowerCase(),
+  };
 };
 
 export const getStreams = (gameID) => async (dispatch) => {
