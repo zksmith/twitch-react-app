@@ -27,13 +27,7 @@ const Landing = ({ featuredStreams }) => {
       </HomeVideoContainer>
       <ThumbnailContainer>
         {featuredStreams
-          .slice(0, 5)
-          .filter(({ user_name }) => {
-            return (
-              user_name !==
-              (currentStream ? currentStream : featuredStreams[0].user_name)
-            );
-          })
+          .slice(0, 6)
           .map(({ thumbnail_url, id, title, user_name }) => (
             <ThumbnailButton
               onClick={() => setCurrentStream(user_name)}
@@ -46,6 +40,10 @@ const Landing = ({ featuredStreams }) => {
                   .replace("{height}", "180")}
                 alt={user_name}
                 key={id}
+                selected={
+                  user_name ===
+                  (currentStream ? currentStream : featuredStreams[0].user_name)
+                }
               />
             </ThumbnailButton>
           ))}

@@ -4,6 +4,7 @@ export const HomeVideoContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 10%;
 
   @media (max-width: 979px) {
     .selected-featured-stream {
@@ -14,23 +15,26 @@ export const HomeVideoContainer = styled.section`
 
 export const ThumbnailContainer = styled.section`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   margin-top: 10px;
   bottom: 0;
   width: 100%;
+  justify-content: center;
+  @media (max-width: 979px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ThumbnailButton = styled.button`
-  width: 16rem;
+  width: 12rem;
   max-width: 50%;
-  margin: 0.3rem 0;
+  margin: 0.3rem 2px;
   cursor: pointer;
   border: 0;
   padding: 0;
   background: inherit;
   color: inherit;
   overflow: hidden;
+  outline: none;
 `;
 
 export const ThumbnailButtonImage = styled.img`
@@ -41,4 +45,6 @@ export const ThumbnailButtonImage = styled.img`
     transition-duration: 0.5s;
     transform: scale(1.1);
   }
+  ${(props) => (props.selected ? "" : "filter: grayscale(100%)")}
+  ${(props) => (props.selected ? "border: 3px solid" : "")}
 `;
