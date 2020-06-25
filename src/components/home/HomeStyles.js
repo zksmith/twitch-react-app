@@ -4,7 +4,16 @@ export const HomeVideoContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 10%;
+  flex-direction: column;
+  margin: 6% auto 0 auto;
+  width: 90%;
+
+  p {
+    margin: 5px 0;
+  }
+  a {
+    text-decoration: underline;
+  }
 
   @media (max-width: 979px) {
     .selected-featured-stream {

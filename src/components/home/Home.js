@@ -1,5 +1,6 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
+import { Link } from "@reach/router";
 
 import {
   HomeVideoContainer,
@@ -11,26 +12,38 @@ import Video from "../Video";
 import Loading from "../layout/Loading";
 
 const Landing = ({ featuredStreams }) => {
-  const [currentStream, setCurrentStream] = useState("");
+  const [currentStream, setCurrentStream] = useState({
+    user_name: "",
+    title: "",
+  });
 
-  if (featuredStreams === null) {
+  useEffect(() => {
+    if (featuredStreams) {
+      setCurrentStream(featuredStreams[0]);
+    }
+  }, [featuredStreams]);
+
+  if (!featuredStreams) {
     return <Loading />;
   }
   return (
     <Fragment>
       <HomeVideoContainer>
-        <Video
-          currentStream={
-            currentStream ? currentStream : featuredStreams[0].user_name
-          }
-        />
+        <Video currentStream={currentStream.user_name} />
+        <p>
+          <Link to={`/channel/${currentStream.user_name}`}>
+            {currentStream.user_name.toUpperCase()}
+          </Link>
+        </p>
+        <p>{currentStream.title}</p>
       </HomeVideoContainer>
+
       <ThumbnailContainer>
         {featuredStreams
           .slice(0, 6)
           .map(({ thumbnail_url, id, title, user_name }) => (
             <ThumbnailButton
-              onClick={() => setCurrentStream(user_name)}
+              onClick={() => setCurrentStream({ user_name, title })}
               key={id}
               title={title}
             >
@@ -40,10 +53,7 @@ const Landing = ({ featuredStreams }) => {
                   .replace("{height}", "180")}
                 alt={user_name}
                 key={id}
-                selected={
-                  user_name ===
-                  (currentStream ? currentStream : featuredStreams[0].user_name)
-                }
+                selected={user_name === currentStream.user_name}
               />
             </ThumbnailButton>
           ))}
