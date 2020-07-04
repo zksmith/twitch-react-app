@@ -21,7 +21,7 @@ const StreamCard = ({ name, preview, game, status, viewers }) => (
           <p>{`${name} | ${kFormatter(viewers)} viewers`}</p>
         </Link>
         <Link to={`/streams/${game}`}>
-          <p>{game}</p>
+          <p>ID: {game}</p>
         </Link>
       </div>
     </div>
@@ -34,7 +34,7 @@ StreamCard.propTypes = {
   game: PropTypes.string,
   logo: PropTypes.string,
   status: PropTypes.string,
-  viewers: PropTypes.number
+  viewers: PropTypes.number,
 };
 
 export default StreamCard;
